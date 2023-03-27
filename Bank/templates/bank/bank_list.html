@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main-content %}
+{% for bank in banks %}
+<ul>
+    <li>{{bank.bank_name}}</li>
+    <li>{{bank.phone_num}}</li>
+    <li>{{bank.email}}</li>
+
+    <li>{{bank.description}}</li>
+</ul>
+{% endfor %}
+{% endblock main-content %}
