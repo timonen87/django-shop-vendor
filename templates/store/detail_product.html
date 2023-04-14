@@ -1,0 +1,564 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+    Страница побробной информации о продукте
+{% endblock title %}
+{% block content %}
+
+<main>
+    <div class="section">
+    <div class="container">
+    <div class="wrap">
+        <div class="product dotgrid">
+        <div class="wrapper">
+            <div class="image flexx">
+            <div class="outer-main">
+
+                <div class="main-image swiper">
+
+                    
+                <div class="wrap swiper-wrapper">
+                    <div class="item swiper-slide">
+                    <img src="{{ product.image.url }}" alt="">
+                    </div>
+                    <div class="item swiper-slide">
+                    <img src="{{ product.image.url }}" alt="">
+                    </div>
+                    <div class="item swiper-slide">
+                    <img src="{{ product.image.url }}" alt="">
+                    </div>
+                    <div class="item swiper-slide">
+                    <img src="/img/product_06b.jpg" alt="">
+                    </div>
+                    <div class="item swiper-slide">
+                    <img src="/img/product_02.jpg" alt="">
+                    </div>
+                    <div class="item swiper-slide">
+                    <img src="/img/product_02b.jpg" alt="">
+                    </div>
+                </div>
+                <div class="custom-pagination">
+                    <div class="swiper-pagination">
+
+                    </div>
+                </div>
+                </div>
+                <div class="outer-thumb ob-cover">
+                <div class="thumbnail-image swiper">
+                    <div class="wrap swiper-wrapper">
+                    <div class="item swiper-slide">
+                        <div class="thumb-wrap"><img src="{{ product.image.url }}" alt=""></div>
+                    </div>
+                    <div class="item swiper-slide">
+                        <div class="thumb-wrap"><img src="{{ product.image.url }}" alt=""></div>
+                    </div>
+                    <div class="item swiper-slide">
+                        <div class="thumb-wrap"><img src="{{ product.image.url }}" alt=""></div>
+                    </div>
+                    <div class="item swiper-slide">
+                        <div class="thumb-wrap"> <img src="/img/product_06b.jpg" alt=""></div>
+                    </div>
+                    <div class="item swiper-slide">
+                        <div class="thumb-wrap"> <img src="/img/product_02.jpg" alt=""></div>
+                    </div>
+                    <div class="item swiper-slide">
+                        <div class="thumb-wrap"><img src="/img/product_02b.jpg" alt=""></div>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+
+            </div>
+            <div class="summary">
+            <div class="entry">
+                <h1 class="title">{{product.title}}</h1>
+                <div class="product-group">
+                <div class="product-price">
+                    <span class="current">₽ {{product.price}}</span>
+                    <div class="wrap">
+                    <span class="before">₽ 700.00</span>
+                    <span class="discount">-25%</span>
+                    </div>
+                </div>
+                <div class="product-rating">
+                    <span>
+                    <i class="ri-star-fill"></i>
+                    <span>4.8</span>
+                    </span>
+                    <a href=""> 3 Отзыва</a>
+                </div>
+                </div>
+                <div class="product-color">
+                <span>Цвет:</span>
+                <div class="wrap">
+                    <button class="tosca selected"></button>
+                    <button class="brown"></button>
+                    <button class="ocean"></button>
+                </div>
+                </div>
+                <div class="product-size">
+                <span>Размер:</span>
+                <div class="wrap">
+                    <button disabled>S</button>
+                    <button>M</button>
+                    <button class="selected">L</button>
+                    <button>XL</button>
+                </div>
+                </div>
+                <div class="product-stock">
+                <div class="wrap">
+                    <strong> 102</strong>
+                    <div class="grey-color">in stock</div>
+                    <i class="ri-checkbox-circle-line"></i>
+                </div>
+                </div>
+                <div class="product-action">
+                <div class="qty">
+                    <button class="decrease">-</button>
+                    <input type="text" value="1">
+                    <button class="increase">+</button>
+                </div>
+                <div class="addcart button">
+                    <button type="submit" class="primary-btn">В корзину</button>
+                </div>
+                <div class="buynow button">
+                    <button type="submit" class="secondary-btn btn">Купить сейчас</button>
+                </div>
+                </div>
+                <div class="product-control list-inline">
+                <ul>
+                    <li><a href="#0"><i class="ri-heart-line"></i><span>Добавить в избранное</span></a></li>
+                    <li><a href="#0"><i class="ri-arrow-left-right-line"></i><span>Сравнить</span></a></li>
+                    <li><a href="#0" trigger-button data-target="data-share"><i class="ri-share-forward-line"></i><span>Поделиться</span></a></li>
+                    <li><a href="#0" trigger-button data-target="data-question"><i class="ri-question-line"></i><span>Задать вопрос</span></a></li>
+                </ul>
+                </div>
+                <div class="shipping">
+                <ul>
+                    <li>
+                    <i class="ri-gift-line"></i>
+                    <span>Бесплатный возврат:</span>
+                    <span class="grey-orders">Все по 1000 ₽</span>
+
+                    </li>
+                    <li>
+                    <i class="ri-truck-line"></i>
+                    <span>Доставка в срок:</span>
+                    <span class="grey-orders">01 — 07 января 2024</span>
+
+                    </li>
+                </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="product detail">
+            <div class="wrap tabbed">
+            <nav class="list-inline scrollto">
+                <ul class="wrapper">
+                <li class="active"><a href="#0" class="tabbed-trigger" data-id="product-description"><span>О товаре</span></a></li>
+                <li><a href="#0" class="tabbed-trigger" data-id="product-custom"><span>Как выбрать размер?</span></a></li>
+                <li><a href="#0" class="tabbed-trigger" data-id="product-review"><span>Комментарии</span> <span class="item-floating">3</span></a></li>
+                <li><a href="#0" class="tabbed-trigger" data-id="product-shipping"><span>Обзоры</span></a></li>
+                </ul>
+            </nav>
+            <div id="product-description" class="product-about description active">
+                <div class="text-block">
+                <h3>{{ product.title }}</h3>
+                <div class="grey-color">
+                    <p>
+                        {{ product.description }}
+                    </p>
+                </div>
+                </div>
+                <div class="dotgrid">
+                <div class="wrapper">
+                    <div class="list-block list-text">
+                    <h3>Характеристики</h3>
+                    <ul class="grey-color">
+                        <li>Состав Вискоза — 96%, Эластан — 4%</li>
+                        <li>Размер товара на модели S INT</li>
+                        <li>Параметры модели 89-60-84</li>
+                        <li>Рост модели на фото 176 см</li>
+                        <li>Длина 122 см</li>
+                        <li>Длина рукава 52 см</li>
+                        <li> Сезон демисезон</li>
+                        <li> Цвет бежевый</li>
+                    </ul>
+                    </div>
+                    <!-- <div class="list-block">
+                    <h4>Описание</h4>
+                    <div class="grey-color">
+                    <p>Данный товар является частью проекта Lamoda planet
+                        - специального раздела нашего каталога, где мы собрали экологичные,
+                        этичные, инклюзивные и благотворительные товары.</p>
+
+                    </div>
+                    </div>
+                    <div class="list-block">
+                    <h4>Описание</h4>
+                    <div class="grey-color">
+                    <p>Данный товар является частью проекта Lamoda planet
+                        - специального раздела нашего каталога, где мы собрали экологичные,
+                        этичные, инклюзивные и благотворительные товары.</p>
+
+                    </div>
+                    </div> -->
+
+                </div>
+                </div>
+
+            </div>
+            <div id="product-custom" class="product-about custom">
+                <h3>Как выбрать размер</h3>
+                <img src="/img/custom-size.jpg" alt="">
+
+            </div>
+            <div id="product-review" class="product-about review">
+                <div class="wrapper">
+                <h3>Комментарии</h3>
+                <div class="head-review">
+                    <div class="sum-rating">
+                    <strong>4.8</strong>
+                    <span>3 комментария</span>
+                    </div>
+                    <div class="button"><a href="#0" class="primary-btn" trigger-button data-target="data-review">Написать комментарий</a></div>
+                </div>
+                <div class="body-review">
+                    <div class="comment-block">
+                    <div class="profile">
+                    <div class="thumb-name">
+                        <div class="profile-img">
+                        <img src="/img/ig_01.jpg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="grouping">
+                        <div class="name">Sara</div>
+                        <div class="rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="date grey-color">7 Ноябрь 2022 </div>
+                    </div>
+                    </div>
+                    <div class="comment">
+                        <strong>Потрясающий товар</strong>
+                        <p class="grey-color">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maiores nihil accusantium esse aliquid est eaque eius sed perferendis quos consequatur consequuntur, at doloribus ipsum et consectetur placeat quam in.</p>
+                    </div>
+                </div>
+                <div class="comment-block">
+                    <div class="profile">
+                    <div class="thumb-name">
+                        <div class="profile-img">
+                        <img src="/img/ig_02.jpg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="grouping">
+                        <div class="name">Kate</div>
+                        <div class="rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="date grey-color">7 Ноябрь 2022 </div>
+                    </div>
+                    </div>
+                    <div class="comment">
+                        <strong>Потрясающий товар</strong>
+                        <p class="grey-color">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maiores nihil accusantium esse aliquid est eaque eius sed perferendis quos consequatur consequuntur, at doloribus ipsum et consectetur placeat quam in.</p>
+                    </div>
+                </div>
+                <div class="comment-block">
+                    <div class="profile">
+                    <div class="thumb-name">
+                        <div class="profile-img">
+                        <img src="/img/ig_03.jpg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="grouping">
+                        <div class="name">Lira</div>
+                        <div class="rating">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        </div>
+                        <div class="date grey-color">7 Ноябрь 2022 </div>
+                    </div>
+                    </div>
+                    <div class="comment">
+                        <strong>Потрясающий товар</strong>
+                        <p class="grey-color">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maiores nihil accusantium esse aliquid est eaque eius sed perferendis quos consequatur consequuntur, at doloribus ipsum et consectetur placeat quam in.</p>
+                    </div>
+                </div>
+
+                </div>
+                </div>
+
+            </div>
+            <div id="product-shipping" class="product-about shipping">
+                <div class="wrapper">
+                <div class="grey-color">
+                <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni adipisci nisi officia quas doloribus odit dolores pariatur dolorem veritatis, minus repellendus quibusdam tenetur cupiditate voluptate magnam eius! Nulla, ipsa perspiciatis.
+                </p></div>
+
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="carousel">
+    <div class="container">
+        <div class="wrap">
+        <div class="heading">
+            <h2 class="title">Рекомендуем</h2>
+        </div>
+        <div class="inner-wrapper">
+            <div class="dotgrid carouselbox swiper">
+
+                <div class="wrapper swiper-wrapper">
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_01.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_01b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_02.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_02b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_03.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_03b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_08.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_08b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_01.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_01b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_02.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_02b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_03.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_03b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+                <div class="item swiper-slide">
+                    <div class="dot-image">
+                    <a href="" class="product-permalink"></a>
+                    <div class="thumbnai">
+                        <img src="/img/product_08.jpg" alt="">
+                    </div>
+                    <div class="thumbnail hover">
+                        <img src="/img/product_08b.jpg" alt="">
+                    </div>
+                    <div class="actions">
+                        <ul>
+                        <li><a href=""><i class="ri-star-line"></i></a></li>
+                        <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                        <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                    <h2 class="dot-title"><a href="">Свитер женский оверсайз кофта</a></h2>
+                    <div class="product-price">
+                        <span class="before">₽ 7000.00</span>
+                        <span class="current">₽ 3000.00</span>
+                    </div>
+                    </div>
+                </div>
+
+                </div>
+
+                <div class="nav">
+                    <div class="swiper-button-next">
+                    <i class="ri-arrow-right-line"></i>
+                    </div>
+                    <div class="swiper-button-prev">
+                    <i class="ri-arrow-left-line"></i>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</main>
+{% endblock content %}

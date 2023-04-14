@@ -1,0 +1,230 @@
+{% load static %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#111111">
+  <title> New Site</title>
+  <link rel="preload" href="{% static 'assets/fonts/MullerRegular.woff2'%}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{% static 'assets/css/vendor.css'%}">
+  <link rel="stylesheet" href="{% static 'assets/css/main.css'%}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+</head>
+<body>
+    <div id="page" class="page-home">
+    
+    {% include 'inc/_header.html' %}
+  
+  <main id='content'>
+    {% comment %} {% include 'inc/_slider.html' %}
+
+    {% include 'inc/_guide.html' %}
+    
+    {% include 'inc/_carousel.html' %}
+
+    {% include 'inc/_blog.html' %}
+    {% include 'inc/_frominsta.html' %} {% endcomment %}
+    
+    {% block content %} 
+    {% endblock content %}
+  </main>
+</div>
+    
+
+<footer>
+  <div class="inner-footer">
+  <div class="container">
+    <div class="wrap">
+      <div class="top">
+        <div class="subscribe">
+          <h3>Подписаться на новинки</h3>
+          <p class="grey-color">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur, sapiente.</p>
+          <form action="" class="search">
+            <i class="ri-mail-line"></i>
+            <input type="text" class="input"  placeholder="Введите ваш Email" name="" id="">
+            <input type="submit" class="submit">
+            <i class="ri-arrow-right-line"></i>
+          </form>
+        </div>
+        <div class="list-block">
+          <h3 class="dot-title">
+            Поддержка
+          </h3>
+          <ul>
+            <li><a href="">О компании</a></li>
+            <li><a href="">Доставка</a></li>
+            <li><a href="">Оплата</a></li>
+            <li><a href="">Контакты</a></li>
+            <li><a href="">Возврат</a></li>
+          </ul>
+        </div>
+        <div class="list-block">
+          <h3 class="dot-title">
+            Информация
+          </h3>
+          <ul>
+            <li><a href="">О нас</a></li>
+            <li><a href="">Контакты</a></li>
+            <li><a href="">Сертификаты</a></li>
+            <li><a href="">Обратная связь</a></li>
+            <li><a href="">Блог</a></li>
+          </ul>
+        </div>
+
+        <div class="list-block">
+          <h3 class="dot-title">
+            Контакты
+          </h3>
+          <div class="comp-adress grey-color">
+            <p>426000, г. Москва а/я 10153</p>
+            <p>
+            <a href="">8 800 777-68-93</a>
+            <br>
+            <a href="">info@mail.ru</a>
+          </p>
+          <p>
+            с 8:00 до 20:00 (МСК)
+          </p>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="bottom">
+        <div class="list-inline">
+          <ul>
+            <li><a href=""><i class="ri-facebook-line"></i></a></li>
+            <li><a href=""><i class="ri-instagram-line"></i></a></li>
+            <li><a href=""><i class="ri-twitter-line"></i></a></li>
+            <li><a href=""><i class="ri-telegramm-line"></i></a></li>
+          </ul>
+        </div>
+        <div class="copyright">
+          <p>2023. All rights reserved</p>
+        </div>
+
+    </div>
+  </div>
+
+
+
+
+
+</footer>
+</div>
+  
+  <div class="overlay" data-overlay></div>
+  
+    <div id="data-share" class="data-popup d-share">
+      <div class="wrap">
+        <div class="data-content">
+          <a href="#0" class="close-trigger i ri-close-line" close-button></a>
+          <div class="form">
+          <label> Копировать ссылку</label>
+          <input type="text" disabled value="https://youtu.be/p8vEWKEuJMw">
+          <span><i class="ri-file-copy-line"></i></span>
+        </div>
+    
+        <div class="media-share list-inline">
+          <label> Поделиться ссылкой</label>
+          <ul>
+            <li><a href="" class="i ri-facebook-line"></a></li>
+            <li><a href="" class="i ri-instagram-line"></a></li>
+            <li><a href="" class="i ri-youtube-line"></a></li>
+            <li><a href="" class="i ri-whatsapp-line"></a></li>
+    
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="data-question" class="data-popup data-question">
+    <div class="wrap">
+      <div class="data-content">
+      <a href="#0" class="close-trigger i ri-close-line" close-button></a>
+      <h3>Задать вопрос</h3>
+      <form action="">
+        <div><input type="text" placeholder="Имя"></div>
+        <div><input type="text" placeholder="Email"></div>
+        <div><textarea placeholder="Ваш вопрос..." cols="30" rows="5"></textarea></div>
+        <div class="button">
+          <button type="submit" class="secondary-btn">Отправить</button>
+        </div>
+  
+      </form>
+    </div>
+    </div>
+  </div>
+  
+  <div id="data-login" class="data-popup data-login">
+    <div class="wrap">
+      <div class="data-content">
+      <a href="#0" class="close-trigger i ri-close-line" close-button></a>
+      <h3>Авторизация</h3>
+      <form action="login/">
+        <div><input type="text" placeholder="Имя"></div>
+        <div><input type="text" placeholder="Email"></div>
+  
+        <div class="button">
+          <button type="submit" class="secondary-btn">Войти</button>
+        </div>
+  
+      </form>
+    </div>
+    </div>
+  </div>
+  
+  <div id="data-review" class="data-popup d-review">
+    <div class="wrap">
+      <div class="data-content">
+      <a href="#0" class="close-trigger i ri-close-line" close-button></a>
+      <h3>Напишите комментарий</h3>
+      <form action="add/comment/">
+        <div class="dotgrid">
+          <div class="wrapper">
+            <div><input type="text" placeholder="Имя"></div>
+          <div><input type="text" placeholder="Email"></div>
+          </div>
+        </div>
+        <div class="rating">
+          <span>Ваша оценка:</span>
+          <div class="stars">
+            <input type="radio" name="rating" id="star5">
+            <label for="star5"> <i class="ri-star-fill"></i></label>
+            <input type="radio" name="rating" id="star4">
+            <label for="star4"> <i class="ri-star-fill"></i></label>
+            <input type="radio" name="rating" id="star3">
+            <label for="star3"> <i class="ri-star-fill"></i></label>
+            <input type="radio" name="rating" id="star2">
+            <label for="star2"> <i class="ri-star-fill"></i></label>
+            <input type="radio" name="rating" id="star1">
+            <label for="star1"> <i class="ri-star-fill"></i></label>
+          </div>
+        </div>
+        <div><input type="text" placeholder="Заголовок"></div>
+        <div><textarea placeholder="Ваш комментарий..." cols="30" rows="5"></textarea></div>
+        <div class="button">
+          <button type="submit" class="secondary-btn">Отправить</button>
+        </div>
+  
+      </form>
+    </div>
+    </div>
+  </div>
+  
+    <script src="{% static 'assets/js/main.js'%}"></script>
+</body>
+
+</html>
