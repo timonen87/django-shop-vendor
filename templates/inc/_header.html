@@ -13,11 +13,19 @@
             </div>
             <div class="list-inline">
               <ul>
+                {% if user.is_authenticated %}
                 <li>
-                  <a href="#0" trigger-button data-target="data-login">
+                  <a href="">{{user.username}}</a>   
+                </li>
+                {% else %}
+              
+                <li>
+                  <a href="{% url 'userauth:sing-in' %}" >
+                    {% comment %} <a href="#0" trigger-button data-target="data-login"> {% endcomment %}
                     <i class="ri-user-line"></i>
                   </a>
                 </li>
+                {% endif %}
                 <li>
                   <a href="">
                     <span class="item-floating">7</span>
@@ -30,8 +38,8 @@
           <div class="header-center">
             <nav class="menu">
               <ul>
-                <li><a href=""><span>Главная</span></a></li>
-                <li><a href="">
+                <li><a href="/"><span>Главная</span></a></li>
+                <li><a href="#">
                     <span>Каталог</span>
                     <i class="ri-arrow-down-s-line"></i>
                   </a>
@@ -74,17 +82,7 @@
                               </div>
                             </div>
                             <div class="links">
-                              <div class="list-block">
-                                <h3 class="dot-title">Категории</h3>
-                                <ul >
-                                  {% for c in categories %}
-                                  
-                                    <li>
-                                      <a href="{{ c.get_absolute_url }}">{{ c.name|title }}</a></li>
-                                   {% endfor %}
-  
-                                  </ul>
-                            </div>
+                             
                             <div class="list-block">
                                 <h3 class="dot-title">Бренды</h3>
                                   <ul>
@@ -97,6 +95,7 @@
                                     <li><a href="">Afati</a></li>
                                   </ul>
                             </div>
+                           
                           </div>
                         </div>
                       </div>
@@ -106,7 +105,8 @@
               </ul>
               <ul>
   
-                <li><a href="">
+                <li>
+                  <a href="">
                     <span>Бренды</span>
                     <i class="ri-arrow-down-s-line"></i>
                   </a>
@@ -121,6 +121,21 @@
                   </ul>
                 </li>
                 <li><a href=""><span>Контакты</span></a></li>
+                {% if user.is_authenticated %}
+                <li>
+                  <a href="">
+                    <span>{{user.username}}</span>
+                    <i class="ri-arrow-down-s-line"></i>
+                  </a>
+                  <ul class="sub-menu list-block">
+                    <li><a href="">Профиль</a></li>
+                    <li><a href="{% url 'userauth:sing-out' %}">Выйти</a></li>
+                  
+                  </ul>
+                </li>
+                {%endif%} 
+
+                
               </ul>
             </nav>
             <div class="branding"><a href="/">.Store</a></div>
@@ -213,8 +228,14 @@
             </ul>
           </nav>
           <div class="button">
-          <a href="" class="primary-btn">Войти</a>
-          <a href="" class="primary-btn">Регистрация</a>
+          {% if not user.is_authenticated%}
+          <a href="{% url 'userauth:sing-in'%}" class="primary-btn">Войти</a>
+          <a href="{% url 'userauth:sing-up'%}" class="primary-btn">Регистраци</a>
+          {% else %}
+          <a href="{% url 'userauth:sing-out'%}" class="primary-btn">Выйти</a>
+          {% endif %}
+
+
         </div>
         </div>
       </div>

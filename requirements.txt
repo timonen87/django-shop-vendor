@@ -1,0 +1,16 @@
+asgiref==3.6.0
+cfgv==3.3.1
+distlib==0.3.6
+Django==4.2
+django-jazzmin==2.6.0
+django-js-asset==2.0.0
+django-mptt==0.11.0
+filelock==3.11.0
+identify==2.5.22
+nodeenv==1.7.0
+Pillow==9.5.0
+platformdirs==3.2.0
+pre-commit==3.2.2
+PyYAML==6.0
+sqlparse==0.4.3
+virtualenv==20.21.0

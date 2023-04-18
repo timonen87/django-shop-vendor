@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
+    'userauth',
     
     
 ]
@@ -66,7 +67,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'store.context_processors.categories',
+                'userauth.context_processors.register_view',
+
+        
             ],
         },
     },
@@ -139,4 +142,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-# JAZZMIN_SETTINGS
+# JAZZMIN_SETTINGS = [
+#     'site_header': 'Ecomerce Shop',
+#     'site_brand': 'Ваши заказы',
+#     'site_logo': 'static/assets/shop_logo.png',
+
+# ]
+
+
+
+AUTH_USER_MODEL = 'userauth.User'
