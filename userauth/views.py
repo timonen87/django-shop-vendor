@@ -44,21 +44,21 @@ def login_view(request):
         try:
             # проверяем наличие email в базе данных
             user = User.objects.get(email=email)
+            # проходим аутификацию 
             user = authenticate(request, email=email, password=password)
 
             if user is not None:
+                # если аунтификация прошла успешно, тогда проходим авторизацию
+                # и отправляем messages
                 login(request, user)
                 messages.success(request, f'Вы вошли в систему')
                 return redirect('store:all_products')
+            messages.warning(request, f'Вы ввели неверный пароль')
+            
         except:
             messages.warning(request, f'Пользователь {email} не существует')
-
-        
-
-    context = {
-
-    }
     
+    context = {}
     return render(request, 'userauth/sign-in.html', context)
 
 
