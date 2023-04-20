@@ -42,6 +42,7 @@ def login_view(request):
         password = request.POST.get('password')
 
         try:
+            # проверяем наличие email в базе данных
             user = User.objects.get(email=email)
             user = authenticate(request, email=email, password=password)
 

@@ -1207,9 +1207,15 @@ h4 {
     border-color: var(--dark-color);
   }
 }
-.page-home main > div:not(.slider, .frominsta), .inner-footer {
-  padding: 100px 0;
+/* .page-home main > div:not(.slider, .frominsta), .inner-footer {
+  padding: 10px 0;
+} */
+
+.page-home > div:not(.slider, .frominsta), .inner-footer {
+  padding: 10px 0;
 }
+
+
 
 .guide {
   background-color: var(--flashwhite-color);
@@ -2476,4 +2482,10 @@ main > div .heading {
   background-color: #cfd1d4;
   border-color: #b8babe; }
   .alert-gray-900 .alert-link {
-    color: #080b12; }
+    color: #080b12; 
+  }
+
+.alert-container {
+  margin: 0 auto;
+
+}
