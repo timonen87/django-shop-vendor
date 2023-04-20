@@ -51,9 +51,9 @@ def login_view(request):
                 # если аунтификация прошла успешно, тогда проходим авторизацию
                 # и отправляем messages
                 login(request, user)
-                messages.success(request, f'Вы вошли в систему')
+                messages.success(request, f'Вы вошли в систему, как {user} ')
                 return redirect('store:all_products')
-            messages.warning(request, f'Вы ввели неверный пароль')
+            messages.warning(request, f' Вы ввели неверный пароль')
             
         except:
             messages.warning(request, f'Пользователь {email} не существует')

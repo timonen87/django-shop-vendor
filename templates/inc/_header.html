@@ -82,6 +82,18 @@
                               </div>
                             </div>
                             <div class="links">
+                              <div class="list-block">
+                                <h3 class="dot-title">Категории</h3>
+                                <ul >
+                                  {% for cat in categories %}
+                                  
+                                  <li>
+                                    <a href="">{{ cat.title }}</a>
+                                  </li>
+                                  {% endfor %}
+  
+                                  </ul>
+                            </div>
                              
                             <div class="list-block">
                                 <h3 class="dot-title">Бренды</h3>
@@ -124,11 +136,11 @@
                 {% if user.is_authenticated %}
                 <li>
                   <a href="">
-                    <span>{{user.username}}</span>
+                    <span>Профиль</span>
                     <i class="ri-arrow-down-s-line"></i>
                   </a>
                   <ul class="sub-menu list-block">
-                    <li><a href="">Профиль</a></li>
+                    {% comment %} <li><a href="">Профиль</a></li> {% endcomment %}
                     <li><a href="{% url 'userauth:sing-out' %}">Выйти</a></li>
                   
                   </ul>
@@ -174,8 +186,15 @@
                   <span>Каталог</span>
                 <span class="child-trigger"><i class="ri-arrow-down-s-line"></i></span>
               </a >
+             
             <ul class="sub-menu list-block">
-              <li><a href="">Блузки и рубашки</a></li>
+              {% for c in categories %}
+                                  
+              <li>
+                <a href="">{{ c.title }}</a>
+              </li>
+            {% endfor %}
+              {% comment %} <li><a href="">Блузки и рубашки</a></li>
               <li><a href="">Брюки</a></li>
               <li><a href="">Верхняя одежда</a></li>
               <li><a href="">Комбинезоны</a></li>
@@ -207,7 +226,7 @@
               <li><a href="">Платья и сарафаны</a></li>
               <li><a href="">Толстовки, свитшоты и худи</a></li>
               <li><a href="">Туники</a></li>
-              <li><a href="">Джемперы, водолазки и кардиганы</a></li>
+              <li><a href="">Джемперы, водолазки и кардиганы</a></li> {% endcomment %}
             </ul>
             </li>
               <li class="has-child"><a href="#0"><span>Бренды</span>
