@@ -72,7 +72,7 @@
                                   <div class="dot-info">
                                     <h2 class="dot-title"><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h2>
                                     <div class="product-price">
-                                      <span class="before">₽ {{ product.price }}</span>
+                                      <span class="before">₽ {{ product.old_price }}</span>
                                       <span class="current">₽ {{ product.price }}</span>
                                     </div>
                                   </div>
@@ -83,12 +83,14 @@
                             </div>
                             <div class="links">
                               <div class="list-block">
-                                <h3 class="dot-title">Категории</h3>
+                                <h3 class="dot-title">Категории {{categories.count}}</h3>
                                 <ul >
                                   {% for cat in categories %}
                                   
                                   <li>
-                                    <a href="">{{ cat.title }}</a>
+                                    <a href="">{{ cat.title }} ({{cat.category.count}})
+                                     
+                                    </a>
                                   </li>
                                   {% endfor %}
   

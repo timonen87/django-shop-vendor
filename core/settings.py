@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'userauth.context_processors.register_view',
+                'store.context_processors.categories',
 
         
             ],

@@ -35,7 +35,7 @@ def register_view(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('store:all_products')
+        return redirect('store:home_page')
     
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -52,7 +52,7 @@ def login_view(request):
                 # и отправляем messages
                 login(request, user)
                 messages.success(request, f'Вы вошли в систему, как {user} ')
-                return redirect('store:all_products')
+                return redirect('store:home_page')
             messages.warning(request, f' Вы ввели неверный пароль')
             
         except:

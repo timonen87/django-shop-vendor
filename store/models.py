@@ -1,4 +1,4 @@
-
+from django.urls import reverse
 from django.db import models
 from shortuuid.django_fields import ShortUUIDField
 from django.utils.html import mark_safe
@@ -45,6 +45,9 @@ class Category(models.Model):
         return mark_safe('<img src="/media/%s" with="50" height="50" />' % (self.image))
         # return mark_safe(f'<img src="{self.image}" with="50" height="50" />')
 
+    # def get_absolute_url(self):
+    #     return reverse('store:category_list', args=[self.slug])
+
     def __str__(self):
         return self.title
     
@@ -84,7 +87,8 @@ class Product(models.Model):
     pid = ShortUUIDField(unique=True, length=10, max_length=20, alphabet='abcdmfgldnsef12343ct')
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='category')
+    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
 
     title = models.CharField(max_length=100, default='Название товара до 100 симвоволов')
     image = models.ImageField(upload_to='user_directory_path', default='product.jpg')

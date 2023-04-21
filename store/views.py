@@ -1,20 +1,24 @@
 from django.shortcuts import render
-from store.models import Product, Category
+from store.models import Category, Product, ProductImages, ProductReview, CartOrder, CartOrderItems, Vendor, Adress, WishList
 
 
-def category_list(request):
+
+
+def home_page(request):
+    products = Product.objects.filter(product_status='published').order_by('-date')
+    related_products = Product.objects.filter(product_status='published', featured=True)
     context = {
-        'categories': Category.objects.all()
+        'products': products,
+        'related_products': related_products,
+  
     }
-    return render(request, 'store/category.html', context)
+    return render(request, 'store/home.html', context)
 
 
-def all_products(request):
+def product_list(request):
     products = Product.objects.all()
     context = {
         'products': products,
-        'related_products': products[:3],
-        'categories': Category.objects.all()
     }
     return render(request, 'store/home.html', context)
 
