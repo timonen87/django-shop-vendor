@@ -1,0 +1,231 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+{{category.title}}
+{% endblock title %}
+{% block content %}
+
+<div class="section">
+    <div class="container wide">
+
+
+      <div class="wrap">
+        
+          <div class="heading">
+            <h1 class="title">{{category.title}}</h1>
+          </div>
+          <div class="content">
+            <div id="sidebar-filter" class="sidebar">
+              <div class="wrap">
+                <a href="#0" class="close-trigger" close-button>
+                  <i class="ri-close-line"></i>
+                </a>
+                <div class="sidebar-content">
+                  <div class="sidebar-title">Фильтр</div>
+                  <div class="widget">
+                    <div class="summary">
+                      <input type="checkbox" name="cats" id="aaa" checked>
+                      <label for="aaa">
+                        <span>Size</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                      </label>
+                      <div class="accord product-size">
+                        <div class="wrap">
+                          <button>S</button>
+                          <button>M</button>
+                          <button>L</button>
+                          <button>XL</button>
+                          <button>XXL</button>
+  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget">
+                    <div class="summary">
+                      <input type="checkbox" name="cats" id="aab" checked>
+                      <label for="aab">
+                        <span>Colors</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                      </label>
+                      <div class="accord product-color">
+                        <div class="wrap">
+                          <button class='tosca'></button>
+                          <button class='brown'></button>
+                          <button class='ocena'></button>
+  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget">
+                    <div class="summary">
+                      <input type="checkbox" name="cats" id="aac" checked>
+                      <label for="aac">
+                        <span>Categories</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                      </label>
+                      <div class="accord list-block scrollto">
+                        <ul class="wrapper initial">
+                            {% for cat in categories %}
+                          <li><a href="{% url 'store:category_product' cat.cid%}">{{cat.title}}</a></li>
+                          {% endfor %}
+                          <li><a href="">Брюки</a></li>
+                          <li><a href="">Верхняя одежда</a></li>
+                          <li><a href="">Комбинезоны</a></li>
+                          <li><a href="">Костюмы</a></li>
+                          <li><a href="">Лонгсливы</a></li>
+                          <li><a href="">Пиджаки, жилеты и жакеты</a></li>
+                          <li><a href="">Платья и сарафаны</a></li>
+                          <li><a href="">Толстовки, свитшоты и худи</a></li>
+                          <li><a href="">Туники</a></li>
+                          <li><a href="">Джемперы, водолазки и кардиганы</a></li>
+                          <li><a href="">Блузки и рубашки</a></li>
+                          <li><a href="">Брюки</a></li>
+                          <li><a href="">Верхняя одежда</a></li>
+                          <li><a href="">Комбинезоны</a></li>
+                          <li><a href="">Костюмы</a></li>
+                          <li><a href="">Лонгсливы</a></li>
+                          <li><a href="">Пиджаки, жилеты и жакеты</a></li>
+                          <li><a href="">Платья и сарафаны</a></li>
+                          <li><a href="">Толстовки, свитшоты и худи</a></li>
+                          <li><a href="">Туники</a></li>
+                          <li><a href="">Джемперы, водолазки и кардиганы</a></li>
+                          <li><a href="">Блузки и рубашки</a></li>
+                          <li><a href="">Брюки</a></li>
+                          <li><a href="">Верхняя одежда</a></li>
+                          <li><a href="">Комбинезоны</a></li>
+                          <li><a href="">Костюмы</a></li>
+                          <li><a href="">Лонгсливы</a></li>
+                          <li><a href="">Пиджаки, жилеты и жакеты</a></li>
+                          <li><a href="">Платья и сарафаны</a></li>
+                          <li><a href="">Толстовки, свитшоты и худи</a></li>
+                          <li><a href="">Туники</a></li>
+                          <li><a href="">Джемперы, водолазки и кардиганы</a></li>
+  
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget">
+                    <div class="summary">
+                      <input type="checkbox" name="cats" id="aad" checked>
+                      <label for="aad">
+                        <span>Brands</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                      </label>
+                      <div class="accord list-block scrollto">
+                        <ul class="wrapper initial">
+                            {% for brand in brands %}
+                            <li><a href="{% url 'store:brands_product_list' brand.bid %}">{{brand.title}}</a></li>
+                            {% endfor %}
+                          <li><a href="">Mango</a></li>
+                          <li><a href="">Zolla</a></li>
+                          <li><a href="">Befree</a></li>
+                          <li><a href="">Zarina</a></li>
+                          <li><a href="">Sela</a></li>
+                          <li><a href="">Looks</a></li>
+                          <li><a href="">Afati</a></li>
+  
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget">
+                    <div class="summary">
+                      <label><span>Price</span></label>
+                      <div class="range-track">
+                        <input type="range" value="25" min="0" max="500" step="1">
+                      </div>
+                      <div class="price-range grey-color">
+                        <span>₽ 40</span>
+                        <span>₽ 400</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="category-content">
+              <div class="sorter">
+                <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
+                  <i class="ri-filter-line"></i></a>
+                <div class="left">
+                  <span class="grey-color">Показано {{category_products.count}} из {{category_products.count}}</span>
+                </div>
+                <div class="right">
+                  <div class="sort-list">
+                    <div class="wrap">
+                      <div class="opt-trigger">
+                        <span class="value">По умолчанию</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                      </div>
+                      <ul>
+                        <li class="active"><a href="#0">По умолчанию</a></li>
+                        <li><a href="#0">По популярности</a></li>
+                        <li><a href="#0">По рейтингу</a></li>
+                        <li><a href="#0">по новинкам</a></li>
+                        <li><a href="#0">По возрастанию цены</a></li>
+                        <li><a href="#0">По убыванию цены</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="list-inline">
+                    <ul>
+                      <li><a href=""><i class="ri-pause-mini-line"></i></a></li>
+                      <li><a href=""><i class="ri-list-check-2"></i></a></li>
+                      <li><a href=""><i class="ri-layout-grid-line"></i></a></li>
+                      <li><a href=""><i class="ri-layout-masonry-line"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="dotgrid">
+  
+                <div class="wrapper">
+                    {% for p in category_products %}
+                  <div class="item">
+                    <div class="dot-image">
+                      <a href="" class="product-permalink"></a>
+                      <div class="thumbnai">
+                        <img src="{{ p.image.url }}" alt="">
+                      </div>
+                      <div class="thumbnail hover">
+                        <img src="{{ p.image.url }}" alt="">
+                      </div>
+                      <div class="actions">
+                        <ul>
+                          <li><a href=""><i class="ri-star-line"></i></a></li>
+                          <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                          <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                      </div>
+                      <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                      <h2 class="dot-title"><a href="{% url 'store:product_detail' p.pid %}">{{ p.title }}</a></h2>
+                      <div class="product-price">
+                        <span class="before">₽ {{ p.old_price }}</span>
+                        <span class="current">₽ {{ p.price }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+  
+                </div>
+  
+  
+  
+                </div>
+              <div class="button">
+                <div class="aprimary-btn">Посмотреть еще</div>
+              </div>
+            </div>
+          </div>
+  
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

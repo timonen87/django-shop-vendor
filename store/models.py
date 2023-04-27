@@ -54,6 +54,23 @@ class Category(models.Model):
 # class Tags(models.Model):
 #     pass
 
+class Brand(models.Model):
+    bid = ShortUUIDField(unique=True, length=10, max_length=20, prefix='brand_', alphabet='abcdmfgldnsef12343ct')
+    title = models.CharField(max_length=100, default='')
+    image = models.ImageField(upload_to='brand', default='brand.jpg')
+
+    class Meta:
+        verbose_name= 'Бренд'
+        verbose_name_plural= 'Бренды'
+
+    def category_image(self):
+        return mark_safe('<img src="/media/%s" with="50" height="50" />' % (self.image))
+        # return mark_safe(f'<img src="{self.image}" with="50" height="50" />')
+
+
+    def __str__(self):
+        return self.title
+
 
 class Vendor(models.Model):
     vid = ShortUUIDField(unique=True, length=10, max_length=20, prefix='cat', alphabet='abcdmfgldnsef12343ct')
@@ -69,6 +86,7 @@ class Vendor(models.Model):
     warranty_period = models.CharField(max_length=100, default='100')
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    # date = models.DateTimeField(auto_now_add=True, name=True, blank=True)
 
     
     class Meta:
@@ -89,6 +107,7 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='category')
     vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
+    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True)
 
     title = models.CharField(max_length=100, default='Название товара до 100 симвоволов')
     image = models.ImageField(upload_to='user_directory_path', default='product.jpg')
@@ -98,6 +117,10 @@ class Product(models.Model):
     old_price = models.DecimalField(max_digits=9999999999999, decimal_places=2, default=150.00)
 
     specifications= models.TextField(blank=True, null=True)
+    type = models.CharField(max_length=100, default='Джинсы')
+    stock_count = models.CharField(max_length=100, default='8')
+    life = models.CharField(max_length=100, default='100 дней')
+    maide_data = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     # tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
 
     product_status = models.CharField(choices=STATUS, max_length=10, default='in_review')
@@ -127,10 +150,13 @@ class Product(models.Model):
         new_price = (self.price / self.old_price) * 100
         return new_price
     
+    # def get_absolute_url(self):
+    #     return reverse('store:category_list', args=[self.slug])
+    
 
 class ProductImages(models.Model):
     images = models.ImageField(upload_to='product-images', default='product.jpg')
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, related_name='p_images', on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(auto_now_add=True)
 
 

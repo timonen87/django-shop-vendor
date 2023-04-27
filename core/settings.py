@@ -69,6 +69,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'userauth.context_processors.register_view',
                 'store.context_processors.categories',
+                'store.context_processors.cat_related_products',
+                'store.context_processors.brands',
+                'store.context_processors.adress',
+               
+               
 
         
             ],

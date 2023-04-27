@@ -50,7 +50,7 @@
                           <div class="mega-content">
                             <div class="dotgrid">
                               <div class="wrapper">
-                                {% for product in related_products %}
+                                {% for product in cat_related_products %}
                                 <div class="item">
                                   <div class="dot-image">
                                     <a href="" class="product-permalink"></a>
@@ -88,7 +88,7 @@
                                   {% for cat in categories %}
                                   
                                   <li>
-                                    <a href="">{{ cat.title }} ({{cat.category.count}})
+                                    <a href="{% url 'store:category_product' cat.cid %}">{{ cat.title }} ({{cat.category.count}})
                                      
                                     </a>
                                   </li>
@@ -100,6 +100,12 @@
                             <div class="list-block">
                                 <h3 class="dot-title">Бренды</h3>
                                   <ul>
+                                    {% for brand in brands %}                
+                                    <li>
+                                      <a href="{% url 'store:brands_product_list' brand.bid %}">{{ brand.title }}                 
+                                      </a>
+                                    </li>
+                                  {% endfor %}
                                     <li><a href="">Mango</a></li>
                                     <li><a href="">Zolla</a></li>
                                     <li><a href="">Befree</a></li>
@@ -125,6 +131,12 @@
                     <i class="ri-arrow-down-s-line"></i>
                   </a>
                   <ul class="sub-menu list-block">
+                    {% for brand in brands %}                
+                    <li>
+                      <a href="{% url 'store:brands_product_list' brand.bid %}">{{ brand.title }}                 
+                      </a>
+                    </li>
+                  {% endfor %}
                     <li><a href="">Mango</a></li>
                     <li><a href="">Zolla</a></li>
                     <li><a href="">Befree</a></li>
@@ -174,6 +186,26 @@
         </div>
       </div>
     </div>
+    {% comment %} <div class="container">
+      <div class="wrap">
+        <div class="breadcrumb list-inline">
+          <ul>
+            <li>
+              <a href="/">Главная</a>
+            </li>
+            <li>
+              <a href="/">Каталог</a>
+            </li>
+            <li>
+              <a href="#">Свитеры</a>
+            </li>
+            <!-- <li>
+              <a href="/"><span>Свитер вязаный оверсайз с горлом объемный</span></a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div> {% endcomment %}
     <div id="mobile-menu" class="mobile-menu">
       <div class="wrap">
         <a href="" class="close-trigger" close-button>
@@ -193,7 +225,9 @@
               {% for c in categories %}
                                   
               <li>
-                <a href="">{{ c.title }}</a>
+                <a href="{% url 'store:category_product' c.cid %}">{{ c.title }} ({{c.category.count}})
+                                     
+                </a>
               </li>
             {% endfor %}
               {% comment %} <li><a href="">Блузки и рубашки</a></li>
@@ -235,6 +269,14 @@
                 <span class="child-trigger"><i class="ri-arrow-down-s-line"></i></span>
               </a>
               <ul class="sub-menu list-block">
+                {% for brand in brands %}
+                                  
+                <li>
+                  <a href="{% url 'store:brands_product_list' brand.bid %}">{{ brand.title }} 
+                                       
+                  </a>
+                </li>
+              {% endfor %}
               <li><a href="">Mango</a></li>
               <li><a href="">Zolla</a></li>
               <li><a href="">Befree</a></li>
@@ -249,11 +291,11 @@
             </ul>
           </nav>
           <div class="button">
-          {% if not user.is_authenticated%}
-          <a href="{% url 'userauth:sing-in'%}" class="primary-btn">Войти</a>
-          <a href="{% url 'userauth:sing-up'%}" class="primary-btn">Регистраци</a>
+          {% if not user.is_authenticated %}
+          <a href="{% url 'userauth:sing-in' %}" class="primary-btn">Войти</a>
+          <a href="{% url 'userauth:sing-up' %}" class="primary-btn">Регистраци</a>
           {% else %}
-          <a href="{% url 'userauth:sing-out'%}" class="primary-btn">Выйти</a>
+          <a href="{% url 'userauth:sing-out' %}" class="primary-btn">Выйти</a>
           {% endif %}
 
 

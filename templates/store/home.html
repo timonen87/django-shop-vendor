@@ -1,10 +1,13 @@
 {% extends './base.html' %} {% load static %} {% block title %} Главная 
 {% endblock title %} 
 {% block content %}
+
 <div class="carousel">
   <div class="container">
     <div class="wrap">
       <div class="heading">
+
+        
         <h2 class="title">Новинки</h2>
       </div>
       <div class="inner-wrapper">
@@ -37,8 +40,8 @@
               </div>
               <div class="dot-info">
                 <h2 class="dot-title">
-                  <a href="{{ p.get_absolute_url }}"
-                    >{{ p.title }}</a
+                  <a href="{% url 'store:product_detail' p.pid %}"
+                    >{{ p.title|truncatechars:50 }}</a
                   >
                 </h2>
                 <div class="product-price">

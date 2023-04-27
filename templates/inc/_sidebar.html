@@ -1,0 +1,127 @@
+{% load static %}
+<div class="sidebar-content">
+    <div class="sidebar-title">Фильтр</div>
+    <div class="widget">
+      <div class="summary">
+        <input type="checkbox" name="cats" id="aaa" checked>
+        <label for="aaa">
+          <span>Size</span>
+          <i class="ri-arrow-down-s-line"></i>
+        </label>
+        <div class="accord product-size">
+          <div class="wrap">
+            <button>S</button>
+            <button>M</button>
+            <button>L</button>
+            <button>XL</button>
+            <button>XXL</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="summary">
+        <input type="checkbox" name="cats" id="aab" checked>
+        <label for="aab">
+          <span>Colors</span>
+          <i class="ri-arrow-down-s-line"></i>
+        </label>
+        <div class="accord product-color">
+          <div class="wrap">
+            <button class='tosca'></button>
+            <button class='brown'></button>
+            <button class='ocena'></button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="summary">
+        <input type="checkbox" name="cats" id="aac" checked>
+        <label for="aac">
+          <span>Categories</span>
+          <i class="ri-arrow-down-s-line"></i>
+        </label>
+        <div class="accord list-block scrollto">
+          <ul class="wrapper initial">
+              {% for cat in categories %}
+            <li><a href="{% url 'store:category_product' cat.cid%}">{{cat.title}}</a></li>
+            {% endfor %}
+            <li><a href="">Брюки</a></li>
+            <li><a href="">Верхняя одежда</a></li>
+            <li><a href="">Комбинезоны</a></li>
+            <li><a href="">Костюмы</a></li>
+            <li><a href="">Лонгсливы</a></li>
+            <li><a href="">Пиджаки, жилеты и жакеты</a></li>
+            <li><a href="">Платья и сарафаны</a></li>
+            <li><a href="">Толстовки, свитшоты и худи</a></li>
+            <li><a href="">Туники</a></li>
+            <li><a href="">Джемперы, водолазки и кардиганы</a></li>
+            <li><a href="">Блузки и рубашки</a></li>
+            <li><a href="">Брюки</a></li>
+            <li><a href="">Верхняя одежда</a></li>
+            <li><a href="">Комбинезоны</a></li>
+            <li><a href="">Костюмы</a></li>
+            <li><a href="">Лонгсливы</a></li>
+            <li><a href="">Пиджаки, жилеты и жакеты</a></li>
+            <li><a href="">Платья и сарафаны</a></li>
+            <li><a href="">Толстовки, свитшоты и худи</a></li>
+            <li><a href="">Туники</a></li>
+            <li><a href="">Джемперы, водолазки и кардиганы</a></li>
+            <li><a href="">Блузки и рубашки</a></li>
+            <li><a href="">Брюки</a></li>
+            <li><a href="">Верхняя одежда</a></li>
+            <li><a href="">Комбинезоны</a></li>
+            <li><a href="">Костюмы</a></li>
+            <li><a href="">Лонгсливы</a></li>
+            <li><a href="">Пиджаки, жилеты и жакеты</a></li>
+            <li><a href="">Платья и сарафаны</a></li>
+            <li><a href="">Толстовки, свитшоты и худи</a></li>
+            <li><a href="">Туники</a></li>
+            <li><a href="">Джемперы, водолазки и кардиганы</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="summary">
+        <input type="checkbox" name="cats" id="aad" checked>
+        <label for="aad">
+          <span>Brands</span>
+          <i class="ri-arrow-down-s-line"></i>
+        </label>
+        <div class="accord list-block scrollto">
+          <ul class="wrapper initial">
+     
+              {% for brand in brands %}
+              <li><a href="{% url 'store:brands_product_list' brand.bid %}">{{brand.title}}</a></li>
+              {% endfor %}
+            <li><a href="">Mango</a></li>
+            <li><a href="">Zolla</a></li>
+            <li><a href="">Befree</a></li>
+            <li><a href="">Zarina</a></li>
+            <li><a href="">Sela</a></li>
+            <li><a href="">Looks</a></li>
+            <li><a href="">Afati</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="summary">
+        <label><span>Price</span></label>
+        <div class="range-track">
+          <input type="range" value="25" min="0" max="500" step="1">
+        </div>
+        <div class="price-range grey-color">
+          <span>₽ 40</span>
+          <span>₽ 400</span>
+        </div>
+      </div>
+    </div>
+  </div>
+

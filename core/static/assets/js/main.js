@@ -314,6 +314,22 @@ trigger.forEach(btn => {
     body.classList.add('active');
   });
 });
+const sorter = document.querySelector('.sort-list');
+if (sorter) {
+  // const sortLi  = sorter.document.querySelectorAll('li')
+  sorter.querySelector('.opt-trigger').addEventListener('click', function () {
+    sorter.querySelector('ul').classList.toggle('show');
+    consolw.log(sortLi);
+  });
+
+  // sortLi.forEach((item) => item.addEventListener('click', function(){
+  //   sortLi.forEach((li) => li ? li.classList.remove('active'): '')
+
+  //   this.classList.add('active')
+  //   sorter.querySelector('opt-trigger span.value').textContent = 'add'
+  //   sorter.querySelector('ul').classList.toggle('show')
+  // }))
+}
 
 // const burgerBtn = document.querySelector('.header-trigger-menu__box')
 // const catalogBtn = document.querySelector('.header-main-nav-line__link');

@@ -6,7 +6,13 @@ app_name = 'store'
 
 urlpatterns = [
     path('', views.home_page, name='home_page'),
-    path('products/', views.product_list, name='product_list'),
-    # path('product/', views.product_detail, name='product_detail'),
-    # path('search/<slug:category_slug>/', views.category_list, name='category_list'),
+
+    path('category/<cid>', views.category_product, name='category_product'),
+    path('brands/<bid>', views.brands_product_list, name='brands_product_list'),
+
+    path('product/<pid>', views.product_detail, name='product_detail'),
+
+    path('vendors/', views.vendor_list, name='vendor_list'),
+    path('vendors/<vid>', views.vendor_detail, name='vendor_detail'),
+    
 ]
