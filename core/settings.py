@@ -71,7 +71,7 @@ TEMPLATES = [
                 'store.context_processors.categories',
                 'store.context_processors.cat_related_products',
                 'store.context_processors.brands',
-                'store.context_processors.adress',
+                # 'store.context_processors.adress',
                
                
 

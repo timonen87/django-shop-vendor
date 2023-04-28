@@ -111,6 +111,7 @@ class Product(models.Model):
 
     title = models.CharField(max_length=100, default='Название товара до 100 симвоволов')
     image = models.ImageField(upload_to='user_directory_path', default='product.jpg')
+    image2 = models.ImageField(upload_to='user_directory_path', default='product2.jpg')
     description = models.TextField(null=True, blank=True, default='Описание товара')
 
     price = models.DecimalField(max_digits=9999999999999, decimal_places=2, default=100.00)

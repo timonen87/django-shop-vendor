@@ -26,12 +26,14 @@ def product_list(request):
 def product_detail(request, pid):
     product = Product.objects.get(pid=pid)
     # product = get_list_or_404(Product, pid=pid)
+    r_products = Product.objects.filter(category=product.category).exclude(pid=pid)
 
     p_image = product.p_images.all()
 
     context = {
          'product': product,
          'p_image': p_image,
+         'r_products': r_products,
     }
 
     return render(request, 'store/detail_product.html', context)

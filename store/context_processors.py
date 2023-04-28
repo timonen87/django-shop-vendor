@@ -17,8 +17,8 @@ def cat_related_products (request):
         'cat_related_products': Product.objects.filter(product_status='published', featured=True)
     }
 
-def adress(request):
-    return {
-        'adress': Adress.objects.get(user=request.user)
-    }
+# def adress(request):
+#     return {
+#         'adress': Adress.objects.get(user=request.user)
+#     }
 

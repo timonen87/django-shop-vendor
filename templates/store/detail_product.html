@@ -315,14 +315,16 @@
     <div class="carousel">
     <div class="container">
         <div class="wrap">
+            {% if r_products %}
         <div class="heading">
             <h2 class="title">Рекомендуем</h2>
         </div>
+        {% endif %}
         <div class="inner-wrapper">
             <div class="dotgrid carouselbox swiper">
 
                 <div class="wrapper swiper-wrapper">
-                    {% for p in cat_related_products %}
+                    {% for p in r_products %}
                 <div class="item swiper-slide">
                     <div class="dot-image">
                     <a href="" class="product-permalink"></a>
