@@ -1,5 +1,9 @@
 {% extends './base.html' %}
+
 {% load static %}
+
+<script type="text/javascript" src='{% static "assets/js/ckeditor-init.js" %}'></script>
+<script type="text/javascript" src='{% static "ckeditor/ckeditor/ckeditor.js" %}'></script>
 
 {% block title %}
     Страница побробной информации о продукте
@@ -156,7 +160,7 @@
                 <h3>{{ product.title }}</h3>
                 <div class="grey-color">
                     <p>
-                        {{ product.description }}
+                        {{ product.description | safe }}
                     </p>
                 </div>
                 </div>
@@ -209,84 +213,40 @@
                 <h3>Комментарии</h3>
                 <div class="head-review">
                     <div class="sum-rating">
-                    <strong>4.8</strong>
-                    <span>3 комментария</span>
+                    <strong>{{average_rating.rating | floatformat:1 }} из 5,0</strong>
+                    <span>{{reviews.all.count}} комментарий</span>
                     </div>
                     <div class="button"><a href="#0" class="primary-btn" trigger-button data-target="data-review">Написать комментарий</a></div>
                 </div>
                 <div class="body-review">
+                    {% for review in reviews %}
                     <div class="comment-block">
                     <div class="profile">
                     <div class="thumb-name">
                         <div class="profile-img">
-                        <img src="/img/ig_01.jpg" alt="">
+                        <img src="{% static 'assets/img/ig_01.jpg' %}" alt="">
                         </div>
 
                     </div>
                     <div class="grouping">
-                        <div class="name">Sara</div>
+                        <div class="name">{{review.user|title}}</div>
                         <div class="rating">
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-fill"></i>
                         </div>
-                        <div class="date grey-color">7 Ноябрь 2022 </div>
+                        <div class="date grey-color">{{review.date| date:'d M Y'}} </div>
                     </div>
                     </div>
                     <div class="comment">
                         <strong>Потрясающий товар</strong>
-                        <p class="grey-color">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maiores nihil accusantium esse aliquid est eaque eius sed perferendis quos consequatur consequuntur, at doloribus ipsum et consectetur placeat quam in.</p>
+                        <p class="grey-color">{{review.review}}</p>
                     </div>
                 </div>
-                <div class="comment-block">
-                    <div class="profile">
-                    <div class="thumb-name">
-                        <div class="profile-img">
-                        <img src="/img/ig_02.jpg" alt="">
-                        </div>
-
-                    </div>
-                    <div class="grouping">
-                        <div class="name">Kate</div>
-                        <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        </div>
-                        <div class="date grey-color">7 Ноябрь 2022 </div>
-                    </div>
-                    </div>
-                    <div class="comment">
-                        <strong>Потрясающий товар</strong>
-                        <p class="grey-color">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maiores nihil accusantium esse aliquid est eaque eius sed perferendis quos consequatur consequuntur, at doloribus ipsum et consectetur placeat quam in.</p>
-                    </div>
-                </div>
-                <div class="comment-block">
-                    <div class="profile">
-                    <div class="thumb-name">
-                        <div class="profile-img">
-                        <img src="/img/ig_03.jpg" alt="">
-                        </div>
-
-                    </div>
-                    <div class="grouping">
-                        <div class="name">Lira</div>
-                        <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        </div>
-                        <div class="date grey-color">7 Ноябрь 2022 </div>
-                    </div>
-                    </div>
-                    <div class="comment">
-                        <strong>Потрясающий товар</strong>
-                        <p class="grey-color">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maiores nihil accusantium esse aliquid est eaque eius sed perferendis quos consequatur consequuntur, at doloribus ipsum et consectetur placeat quam in.</p>
-                    </div>
-                </div>
+                {% endfor %}
+             
+               
 
                 </div>
                 </div>

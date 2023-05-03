@@ -8,7 +8,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls', namespace='store')),
-    path('user/', include('userauth.urls', namespace='userauth'))
+    path('user/', include('userauth.urls', namespace='userauth')),
+    
+    path('ckeditor/', include('ckeditor_uploader.urls'))
 ]
 
 if settings.DEBUG:

@@ -30,7 +30,10 @@
    
   </style>
  
-  
+  <script src="{% static 'assets/js/prism_patched.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'assets/css/prism_patched.min.css' %}">
+  <script type="text/javascript" src='{% static "assets/js/ckeditor-init.js" %}'></script>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -92,87 +95,8 @@
 </div>
     
 
-<footer>
-  <div class="inner-footer">
-  <div class="container">
-    <div class="wrap">
-      <div class="top">
-        <div class="subscribe">
-          <h3>Подписаться на новинки</h3>
-          <p class="grey-color">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur, sapiente.</p>
-          <form action="" class="search">
-            <i class="ri-mail-line"></i>
-            <input type="text" class="input"  placeholder="Введите ваш Email" name="" id="">
-            <input type="submit" class="submit">
-            <i class="ri-arrow-right-line"></i>
-          </form>
-        </div>
-        <div class="list-block">
-          <h3 class="dot-title">
-            Поддержка
-          </h3>
-          <ul>
-            <li><a href="">О компании</a></li>
-            <li><a href="">Доставка</a></li>
-            <li><a href="">Оплата</a></li>
-            <li><a href="">Контакты</a></li>
-            <li><a href="">Возврат</a></li>
-          </ul>
-        </div>
-        <div class="list-block">
-          <h3 class="dot-title">
-            Информация
-          </h3>
-          <ul>
-            <li><a href="">О нас</a></li>
-            <li><a href="">Контакты</a></li>
-            <li><a href="">Сертификаты</a></li>
-            <li><a href="">Обратная связь</a></li>
-            <li><a href="">Блог</a></li>
-          </ul>
-        </div>
 
-        <div class="list-block">
-          <h3 class="dot-title">
-            Контакты
-          </h3>
-          <div class="comp-adress grey-color">
-            <p>426000, г. Москва а/я 10153</p>
-            <p>
-            <a href="">8 800 777-68-93</a>
-            <br>
-            <a href="">info@mail.ru</a>
-          </p>
-          <p>
-            с 8:00 до 20:00 (МСК)
-          </p>
-
-          </div>
-
-        </div>
-
-      </div>
-      <div class="bottom">
-        <div class="list-inline">
-          <ul>
-            <li><a href=""><i class="ri-facebook-line"></i></a></li>
-            <li><a href=""><i class="ri-instagram-line"></i></a></li>
-            <li><a href=""><i class="ri-twitter-line"></i></a></li>
-            <li><a href=""><i class="ri-telegramm-line"></i></a></li>
-          </ul>
-        </div>
-        <div class="copyright">
-          <p>2023. All rights reserved</p>
-        </div>
-
-    </div>
-  </div>
-
-
-
-
-
-</footer>
+{% include 'inc/_footer.html' %}
 </div>
   
   <div class="overlay" data-overlay></div>
@@ -252,43 +176,8 @@
     </div>
   </div>
   
-  <div id="data-review" class="data-popup d-review">
-    <div class="wrap">
-      <div class="data-content">
-      <a href="" class="close-trigger i ri-close-line" close-button></a>
-      <h3>Напишите комментарий</h3>
-      <form action="add/comment/">
-        <div class="dotgrid">
-          <div class="wrapper">
-            <div><input type="text" placeholder="Имя"></div>
-          <div><input type="text" placeholder="Email"></div>
-          </div>
-        </div>
-        <div class="rating">
-          <span>Ваша оценка:</span>
-          <div class="stars">
-            <input type="radio" name="rating" id="star5">
-            <label for="star5"> <i class="ri-star-fill"></i></label>
-            <input type="radio" name="rating" id="star4">
-            <label for="star4"> <i class="ri-star-fill"></i></label>
-            <input type="radio" name="rating" id="star3">
-            <label for="star3"> <i class="ri-star-fill"></i></label>
-            <input type="radio" name="rating" id="star2">
-            <label for="star2"> <i class="ri-star-fill"></i></label>
-            <input type="radio" name="rating" id="star1">
-            <label for="star1"> <i class="ri-star-fill"></i></label>
-          </div>
-        </div>
-        <div><input type="text" placeholder="Заголовок"></div>
-        <div><textarea placeholder="Ваш комментарий..." cols="30" rows="5"></textarea></div>
-        <div class="button">
-          <button type="submit" class="secondary-btn">Отправить</button>
-        </div>
   
-      </form>
-    </div>
-    </div>
-  </div>
+  {% include 'inc/_review.html' %}
   
     <script src="{% static 'assets/js/main.js'%}"></script>
 </body>

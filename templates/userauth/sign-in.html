@@ -87,13 +87,13 @@
                     <h1 class="mb-0 h3">Войти</h1>
                 </div>
 
-                 {% if form.errors %}
+                 {% comment %} {% if form.errors %}
                  <div class="alert alert-danger">
                  {{form.errors}}
                  </div>
                 {% endif %}
 
-            
+             {% endcomment %}
                 <form action=""  method="POST" class="mt-4">
                   {% csrf_token %}
                     <!-- Form -->

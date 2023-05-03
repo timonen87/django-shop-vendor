@@ -3,6 +3,7 @@ from django.db import models
 from shortuuid.django_fields import ShortUUIDField
 from django.utils.html import mark_safe
 from userauth.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 STATUS_CHOICE =(
@@ -20,11 +21,11 @@ STATUS = (
 
 
 RATING = (
-    ('1', "★☆☆☆☆"),
-    ('2', "★★☆☆☆"),
-    ('3', "★★★☆☆"), 
-    ('4', "★★★★☆"), 
-    ('5', "★★★★★"), 
+    (1, "★☆☆☆☆"),
+    (2, "★★☆☆☆"),
+    (3, "★★★☆☆"), 
+    (4, "★★★★☆"), 
+    (5, "★★★★★"), 
 )
 
 def user_directory_path(instance, filename):
@@ -77,6 +78,8 @@ class Vendor(models.Model):
     title = models.CharField(max_length=100, default='Название')
     image = models.ImageField(upload_to='user_directory_path', default='vendor.jpg')
     description = models.TextField(null=True, blank=True, default='Описание продавца')
+    description = RichTextUploadingField(null=True, blank=True, default='Описание продавца', verbose_name = 'text')
+
 
     adress = models.CharField(max_length=100, default='111555, ул.Ленина 24, Москва')
     contact = models.CharField(max_length=100, default='+7 999 456 4555')
@@ -112,16 +115,20 @@ class Product(models.Model):
     title = models.CharField(max_length=100, default='Название товара до 100 симвоволов')
     image = models.ImageField(upload_to='user_directory_path', default='product.jpg')
     image2 = models.ImageField(upload_to='user_directory_path', default='product2.jpg')
-    description = models.TextField(null=True, blank=True, default='Описание товара')
+    # description = models.TextField(null=True, blank=True, default='Описание товара')
+    description = RichTextUploadingField(null=True, blank=True, default='Описание товара', verbose_name = 'text')
+
 
     price = models.DecimalField(max_digits=9999999999999, decimal_places=2, default=100.00)
     old_price = models.DecimalField(max_digits=9999999999999, decimal_places=2, default=150.00)
 
-    specifications= models.TextField(blank=True, null=True)
+    # specifications= models.TextField(blank=True, null=True)
+    specifications= RichTextUploadingField(blank=True, null=True)
+
     type = models.CharField(max_length=100, default='Джинсы')
     stock_count = models.CharField(max_length=100, default='8')
     life = models.CharField(max_length=100, default='100 дней')
-    maide_data = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    # maide_data = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     # tags = models.ForeignKey(Tags, on_delete=models.SET_NULL, null=True)
 
     product_status = models.CharField(choices=STATUS, max_length=10, default='in_review')
@@ -208,7 +215,7 @@ class CartOrderItems(models.Model):
 
 class ProductReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, related_name='reviews')
     review = models.TextField()
     rating = models.IntegerField(choices=RATING, default=None)
     date = models.DateTimeField(auto_now_add=True)

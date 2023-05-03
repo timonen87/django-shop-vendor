@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'userauth',
-    
+    'ckeditor',
     
 ]
 
@@ -67,11 +67,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'userauth.context_processors.register_view',
+                # 'userauth.context_processors.register_view',
                 'store.context_processors.categories',
                 'store.context_processors.cat_related_products',
                 'store.context_processors.brands',
-                # 'store.context_processors.adress',
+                'store.context_processors.adress',
                
                
 
@@ -158,3 +158,45 @@ MEDIA_URL = '/media/'
 
 
 AUTH_USER_MODEL = 'userauth.User'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "skin": "moono",
+        "codeSnippet_theme": "momokai",
+        "toolbar": 'all',
+        "extraPlugins": ','.join(
+        [
+            "codesnippet",
+            "widget",
+            "dialog",
+        ]
+        ),
+    }
+}
+
+
+# CKEDITOR_CONFIGS = {
+#          # Когда имя конфигурации по умолчанию, django-ckeditor использует эту конфигурацию по умолчанию
+#     'default': {
+#                  # Используйте упрощенный китайский
+#         'language':'zh-cn',
+#                  # Пожалуйста, установите ширину и высоту редактора в соответствии с вашей страницей
+#         'width':'730px',
+#         'height':'150px',
+#         'image_previewText':' ',
+#         'tabSpaces': 4,
+#         'toolbar': 'Custom',
+#                  # Добавить кнопку здесь
+#         'toolbar_Custom': [
+#             ['Bold', 'Italic', 'Underline', 'Format', 'RemoveFormat'],
+#             ['NumberedList', 'BulletedList'],
+#             ['Blockquote', 'CodeSnippet'],
+#             ['Image', 'Link', 'Unlink'],
+#             ['Maximize']
+#         ],
+#                  # Плагин
+#         'extraPlugins': ','.join(['codesnippet','uploadimage','widget','lineutils',]),
+#     }
+# }

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_list_or_404
 from store.models import Category, Product, ProductImages, ProductReview, CartOrder, CartOrderItems, Vendor, Adress, WishList, Brand
-
+from django.db.models import Count, Avg
 
 
 
@@ -30,10 +30,15 @@ def product_detail(request, pid):
 
     p_image = product.p_images.all()
 
+    reviews = ProductReview.objects.filter(product=product).order_by('-date')
+    average_rating = ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
+
     context = {
          'product': product,
          'p_image': p_image,
+         'average_rating': average_rating,
          'r_products': r_products,
+         'reviews': reviews,
     }
 
     return render(request, 'store/detail_product.html', context)
