@@ -3,8 +3,9 @@
       <div class="data-content">
       <a href="#0" class="close-trigger i ri-close-line" close-button></a>
       <h3>Напишите комментарий</h3>
-      <form action="add/comment/">
-        <div class="dotgrid">
+      <form method="POST" action="{% url 'store:add_review' product.pid %}" id="commnetForm">
+        {% csrf_token %}
+        {% comment %} <div class="dotgrid">
           <div class="wrapper">
             <div><input type="text" placeholder="Имя"></div>
           <div><input type="text" placeholder="Email"></div>
@@ -27,6 +28,21 @@
         </div>
         <div><input type="text" placeholder="Заголовок"></div>
         <div><textarea placeholder="Ваш комментарий..." cols="30" rows="5"></textarea></div>
+        <div class="button">
+          <button type="submit" class="secondary-btn">Отправить</button>
+        </div> {% endcomment %}
+        
+
+        <div class="rating">
+          <span>Ваша оценка:</span>
+          <div class="stars">
+            {{review_form.rating}}
+           
+          </div>
+        </div>
+        <strong class="text-success" id='review-response'></strong>
+        
+        <div>{{review_form.review}}</div>
         <div class="button">
           <button type="submit" class="secondary-btn">Отправить</button>
         </div>

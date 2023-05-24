@@ -14,5 +14,8 @@ urlpatterns = [
 
     path('vendors/', views.vendor_list, name='vendor_list'),
     path('vendors/<vid>', views.vendor_detail, name='vendor_detail'),
+
+    # add_review
+    path('review/<pid>', views.add_review, name='add_review'),
     
 ]

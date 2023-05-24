@@ -10,7 +10,11 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color" content="#111111">
-  <title> {{category.title}}</title>
+  <title> 
+  {% block title %}
+    {{title}}
+  {% endblock title %}
+</title>
   <link rel="preload" href="{% static 'assets/fonts/MullerRegular.woff2'%}" as="font" type="font/woff2" crossorigin>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -39,6 +43,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
+
 </head>
 <body>
 
@@ -66,6 +71,12 @@
         $(".alert").alert("close")
       }, 3000)
     </script>
+    <script>
+      setTimeout(() => {
+        $(".comment-message").alert("close")
+      }, 3000)
+    </script>
+ 
   </div>
   <main id='content'>
     
@@ -99,87 +110,17 @@
 {% include 'inc/_footer.html' %}
 </div>
   
-  <div class="overlay" data-overlay></div>
-  
-    <div id="data-share" class="data-popup d-share">
-      <div class="wrap">
-        <div class="data-content">
-          <a href="" class="close-trigger i ri-close-line" close-button></a>
-          <div class="form">
-          <label> Копировать ссылку</label>
-          <input type="text" disabled value="https://youtu.be/p8vEWKEuJMw">
-          <span><i class="ri-file-copy-line"></i></span>
-        </div>
-    
-        <div class="media-share list-inline">
-          <label> Поделиться ссылкой</label>
-          <ul>
-            <li><a href="" class="i ri-facebook-line"></a></li>
-            <li><a href="" class="i ri-instagram-line"></a></li>
-            <li><a href="" class="i ri-youtube-line"></a></li>
-            <li><a href="" class="i ri-whatsapp-line"></a></li>
-    
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div id="data-question" class="data-popup data-question">
-    <div class="wrap">
-      <div class="data-content">
-      <a href="" class="close-trigger i ri-close-line" close-button></a>
-      <h3>Задать вопрос</h3>
-      <form action="">
-        <div><input type="text" placeholder="Имя"></div>
-        <div><input type="text" placeholder="Email"></div>
-        <div><textarea placeholder="Ваш вопрос..." cols="30" rows="5"></textarea></div>
-        <div class="button">
-          <button type="submit" class="secondary-btn">Отправить</button>
-        </div>
-  
-      </form>
-    </div>
-    </div>
-  </div>
-  
-  <div id="data-login" class="data-popup data-login">
-    <div class="wrap">
-      <div class="data-content">
-      <a href="" class="close-trigger i ri-close-line" close-button></a>
-      <h3>Регистрация</h3>
-      {% if form.errors %}
-      <div class="alert alert-denger">
-        <strong>{{form.errors}}</strong>
-      </div>{% endif %}
-      <form action="" method="POST">
-        {% csrf_token %}
 
-        <div>{{form.username}}</div>
-        <div>{{form.email}}</div>
-        <div>{{form.password1}}</div>
-        <div>{{form.password2}}</div>
-        <div class="button">
-          <button type="submit" class="secondary-btn">Отправить</button>
-        </div>
-        {% comment %} <div><input type="text" placeholder="Введите свое имя"></div>
-        <div><input type="text" placeholder="Введите свой email"></div>
-        <div><input type="text" placeholder="Придумать пароль"></div>
-        <div><input type="text" placeholder="Подтвердить пароль"></div>
-        <div class="button">
-          <button type="submit" class="secondary-btn">Отправить</button>
-        </div> {% endcomment %}
+   {% include 'inc/_copy_links.html' %}
   
-      </form>
+  {% include 'inc/_question.html' %}
 
-    </div>
-    </div>
-  </div>
+  {% include 'inc/_login.html' %}
   
   
-  {% include 'inc/_review.html' %}
   
     <script src="{% static 'assets/js/main.js'%}"></script>
+    <script src="{% static 'assets/js/review.js'%}"></script>
 </body>
 
 </html>

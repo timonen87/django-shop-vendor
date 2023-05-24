@@ -1,0 +1,32 @@
+<div id="data-login" class="data-popup data-login">
+    <div class="wrap">
+      <div class="data-content">
+      <a href="#0" class="close-trigger i ri-close-line" close-button></a>
+      <h3>Регистрация</h3>
+      {% if form.errors %}
+      <div class="alert alert-denger">
+        <strong>{{form.errors}}</strong>
+      </div>{% endif %}
+      <form action="" method="POST">
+        {% csrf_token %}
+
+        <div>{{form.username}}</div>
+        <div>{{form.email}}</div>
+        <div>{{form.password1}}</div>
+        <div>{{form.password2}}</div>
+        <div class="button">
+          <button type="submit" class="secondary-btn">Отправить</button>
+        </div>
+        {% comment %} <div><input type="text" placeholder="Введите свое имя"></div>
+        <div><input type="text" placeholder="Введите свой email"></div>
+        <div><input type="text" placeholder="Придумать пароль"></div>
+        <div><input type="text" placeholder="Подтвердить пароль"></div>
+        <div class="button">
+          <button type="submit" class="secondary-btn">Отправить</button>
+        </div> {% endcomment %}
+  
+      </form>
+
+    </div>
+    </div>
+  </div>
