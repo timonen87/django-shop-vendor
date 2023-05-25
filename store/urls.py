@@ -12,7 +12,7 @@ urlpatterns = [
 
 
     path('products/', views.products, name='products'),
-    path('product/<pid>', views.product_detail, name='product_detail'),
+    path('products/<pid>', views.product_detail, name='product_detail'),
 
     path('vendors/', views.vendor_list, name='vendor_list'),
     path('vendors/<vid>', views.vendor_detail, name='vendor_detail'),
@@ -23,5 +23,6 @@ urlpatterns = [
     
     # Filter
     path('filter-products/', views.filter_products, name='filter_products'),
+    path('json-filter/', views.JsonFilterProducts.as_view(), name='json_filter'),
     
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_list_or_404, redirect
 from django.template.loader import render_to_string
+from django.views.generic.list import ListView
 from django.http import JsonResponse, HttpResponse
 from store.models import Category, Product, ProductImages, ProductReview, CartOrder, CartOrderItems, Vendor, Adress, WishList, Brand
 from django.db.models import Count, Avg
@@ -165,6 +166,7 @@ def search_view(request):
 def filter_products(request):
     categories = request.GET.getlist('category[]')
     brand = request.GET.getlist('brand[]')
+    type_product = request.GET.getlist('type_product[]')
 
     products = Product.objects.filter(product_status='published')
 
@@ -179,4 +181,18 @@ def filter_products(request):
 
     
     return JsonResponse({'data': data})
+
+
+class JsonFilterProducts(ListView):
+    def get_queryset(self):
+        queryset = Product.objects.filter(
+            Q(category__in = self.request.GET.getlist('category'))|
+            Q(brand__in = self.request.GET.getlist('brand'))
+        ).distinct().values('pid', 'image', 'title', 'old_price', 'price' )
+        return queryset
+    
+    def get(self, request, *args, **kwargs):
+        queryset = list(self.get_queryset())
+        return JsonResponse({'data': queryset}, safe=False)
+
 

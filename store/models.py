@@ -19,6 +19,14 @@ STATUS = (
     ('published', "Опубликовано"), 
 )
 
+# SIZE = (
+#     ('s', "S"),
+#     ('m', "M"),
+#     ('l', "L"), 
+#     ('xl', "XL"), 
+#     ('xxl', "XXL"), 
+# )
+
 
 RATING = (
     (1, "★☆☆☆☆"),
@@ -29,8 +37,8 @@ RATING = (
 )
 
 def user_directory_path(instance, filename):
-    return 'user_{0}/{1}'.format(instance.user.id, filename)
-    # return f'user_{instance.user.id}/{filename}'
+    # return 'user_{0}/{1}'.format(instance.user.id, filename)
+    return f'media/{filename}'
 
 class Category(models.Model):
     # pip install django-shortuuidfield
@@ -52,8 +60,33 @@ class Category(models.Model):
     def __str__(self):
         return self.title
     
-# class Tags(models.Model):
-#     pass
+# class Size(models.Model):
+#     # pip install django-shortuuidfield
+#     cid = ShortUUIDField(unique=True, length=10, max_length=20, prefix='size', alphabet='abcdmfgldnsef12343ct' )
+#     size = models.CharField(max_length=100, default=None, null=True)
+
+#     class Meta:
+#         verbose_name= 'Размер'
+#         verbose_name_plural= 'Размеры'
+
+   
+#     def __str__(self):
+#         return self.size
+
+# class Color(models.Model):
+#     # pip install django-shortuuidfield
+#     cid = ShortUUIDField(unique=True, length=10, max_length=20, prefix='color', alphabet='abcdmfgldnsef12343ct' )
+#     cod_color = models.CharField(max_length=100, default=None, null=True)
+
+#     class Meta:
+#         verbose_name= 'Цвет'
+#         verbose_name_plural= 'Цвет'
+
+   
+#     def __str__(self):
+#         return self.cod_color
+    
+
 
 class Brand(models.Model):
     bid = ShortUUIDField(unique=True, length=10, max_length=20, prefix='brand_', alphabet='abcdmfgldnsef12343ct')
@@ -147,6 +180,7 @@ class Product(models.Model):
         verbose_name= 'Продукт'
         verbose_name_plural= 'Продукты'
 
+    
     def product_image(self):
         return mark_safe('<img src="/media/%s" with="50" height="50" />' % (self.image))
         # return mark_safe(f'<img src="{self.image}" with="50" height="50" />')
@@ -159,11 +193,11 @@ class Product(models.Model):
         return new_price
     
     # def get_absolute_url(self):
-    #     return reverse('store:category_list', args=[self.slug])
+    #     return reverse('store:product_detail', args=[self.slug])
     
 
 class ProductImages(models.Model):
-    images = models.ImageField(upload_to='product-images', default='product.jpg')
+    images = models.ImageField(upload_to='user_directory_path', default='product.jpg')
     product = models.ForeignKey(Product, related_name='p_images', on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(auto_now_add=True)
 
@@ -171,6 +205,10 @@ class ProductImages(models.Model):
     class Meta:
         verbose_name= 'Изображение'
         verbose_name_plural= 'Изображения'
+
+    # def product_image(self):
+    #     return mark_safe('<img src="/media/%s" with="50" height="50" />' % (self.image))
+    # return mark_safe(f'<img src="{self.image}" with="50" height="50" />')
 
 
 ########################### Cart, Order, OrderItems and Adresss #####################################################
