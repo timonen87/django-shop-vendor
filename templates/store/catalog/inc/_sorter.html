@@ -1,0 +1,34 @@
+{% load static %}
+<div class="sorter">
+    <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
+      <i class="ri-filter-line"></i></a>
+    <div class="left">
+      <span class="grey-color">Показано {{products.count}} из {{products.count}}</span>
+    </div>
+    <div class="right">
+      <div class="sort-list">
+        <div class="wrap">
+          <div class="opt-trigger">
+            <span class="value">По умолчанию</span>
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+          <ul>
+            <li class="active"><a href="#0">По умолчанию</a></li>
+            <li><a href="#0">По популярности</a></li>
+            <li><a href="#0">По рейтингу</a></li>
+            <li><a href="#0">по новинкам</a></li>
+            <li><a href="#0">По возрастанию цены</a></li>
+            <li><a href="#0">По убыванию цены</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="list-inline">
+        <ul>
+          <li><a href=""><i class="ri-pause-mini-line"></i></a></li>
+          <li><a href=""><i class="ri-list-check-2"></i></a></li>
+          <li><a href=""><i class="ri-layout-grid-line"></i></a></li>
+          <li><a href=""><i class="ri-layout-masonry-line"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>

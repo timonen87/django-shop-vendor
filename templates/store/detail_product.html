@@ -211,9 +211,8 @@
             
             <div id="product-review" class="product-about review">
                 <div class="wrapper">
-                <h3>Комментарии </h3>
-                <div class="comment-message" id="comment-message">
-                </div>
+                <h3 id='comment-message'>Комментарии </h3>
+               
               
                 <div class="head-review">
                    
@@ -225,15 +224,15 @@
                         <strong>Комментарии</strong>
                         {% endif %}
                     </div>
-                    {% if make_review == True %}
-                    {% if request.user.is_authenticated %} 
+                    {% comment %} {% if make_review == True %} {% endcomment %}
+                    {% comment %} {% if request.user.is_authenticated %}  {% endcomment %}
                         <div class="button">
                             <a href="#0" class="primary-btn" trigger-button data-target="data-review">Написать комментарий</a>
                         </div>
-                    {% else %}
+                    {% comment %} {% else %}
                     <strong>Вы уже оставили Отзыв</strong>
                     {% endif %}
-                    {% endif %}
+                    {% endif %} {% endcomment %}
                 </div>
                 <div class="body-review">
                 {% if reviews %}

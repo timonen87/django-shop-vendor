@@ -39,7 +39,7 @@
             <nav class="menu">
               <ul>
                 <li><a href="/"><span>Главная</span></a></li>
-                <li><a href="#">
+                <li><a href="/products/">
                     <span>Каталог</span>
                     <i class="ri-arrow-down-s-line"></i>
                   </a>
@@ -106,13 +106,7 @@
                                       </a>
                                     </li>
                                   {% endfor %}
-                                    <li><a href="">Mango</a></li>
-                                    <li><a href="">Zolla</a></li>
-                                    <li><a href="">Befree</a></li>
-                                    <li><a href="">Zarina</a></li>
-                                    <li><a href="">Sela</a></li>
-                                    <li><a href="">Looks</a></li>
-                                    <li><a href="">Afati</a></li>
+                                   
                                   </ul>
                             </div>
                            
@@ -137,13 +131,7 @@
                       </a>
                     </li>
                   {% endfor %}
-                    <li><a href="">Mango</a></li>
-                    <li><a href="">Zolla</a></li>
-                    <li><a href="">Befree</a></li>
-                    <li><a href="">Zarina</a></li>
-                    <li><a href="">Sela</a></li>
-                    <li><a href="">Looks</a></li>
-                    <li><a href="">Afati</a></li>
+                    
                   </ul>
                 </li>
                 {% comment %} <li><a href=""><span>Контакты</span></a></li> {% endcomment %}
@@ -178,9 +166,9 @@
       </div>
       <div id="search-float" class="search-float">
         <div class="container wide">
-          <form action="" class="search">
+          <form action="{% url 'store:search' %}" class="search" method="get" >
             <i class="ri-search-line"></i>
-            <input type="search" class="input" id="" placeholder="Поиск..">
+            <input type="search" class="input" id="" placeholder="Поиск.." name="q" >
             <i class="ri-close-line" close-button></i>
           </form>
         </div>

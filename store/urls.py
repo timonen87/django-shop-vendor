@@ -10,6 +10,8 @@ urlpatterns = [
     path('category/<cid>', views.category_product, name='category_product'),
     path('brands/<bid>', views.brands_product_list, name='brands_product_list'),
 
+
+    path('products/', views.products, name='products'),
     path('product/<pid>', views.product_detail, name='product_detail'),
 
     path('vendors/', views.vendor_list, name='vendor_list'),
@@ -17,5 +19,9 @@ urlpatterns = [
 
     # add_review
     path('review/<pid>', views.add_review, name='add_review'),
+    path('search/', views.search_view, name='search'),
+    
+    # Filter
+    path('filter-products/', views.filter_products, name='filter_products'),
     
 ]

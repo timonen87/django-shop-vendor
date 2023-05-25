@@ -8,9 +8,12 @@
 
 <div class="section">
     <div class="container wide">
+
+
       <div class="wrap">
+        
           <div class="heading">
-            <h1 class="title">{{brand.title}}</h1>
+            <h1 class="title">{{category.title}}</h1>
           </div>
           <div class="content">
             <div id="sidebar-filter" class="sidebar">
@@ -113,17 +116,39 @@
                         <i class="ri-arrow-down-s-line"></i>
                       </label>
                       <div class="accord list-block scrollto">
-                        <ul class="wrapper initial">
+                        <ul class="wrapper initial checkbox"> 
+                          <ul>
                             {% for brand in brands %}
-                            <li><a href="{% url 'store:brands_product_list' brand.bid %}">{{brand.title}}</a></li>
-                            {% endfor %}
-                          <li><a href="">Mango</a></li>
-                          <li><a href="">Zolla</a></li>
-                          <li><a href="">Befree</a></li>
-                          <li><a href="">Zarina</a></li>
-                          <li><a href="">Sela</a></li>
-                          <li><a href="">Looks</a></li>
-                          <li><a href="">Afati</a></li>
+                    
+                          <li class="ctegory_filter_checkbox" style="display: flex; margin-left: -25px;">
+                            <input class="form-check-input filter-checkbox" type="checkbox" name="checkbox" value="{{ brand.id }}" data-filter="brand" style="display: block; width: 15px; height: 15px; ">
+                            <a href="{% url 'store:brands_product_list' brand.bid %}" style="pointer-events:none; padding: 0px 10px">{{brand.title}}</a>
+                          </li>
+                          {% endfor %}
+                      
+  
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget">
+                    <div class="summary">
+                      <input type="checkbox" name="cats" id="aad" checked>
+                      <label for="aad">
+                        <span>Категории</span>
+                        <i class="ri-arrow-down-s-line"></i>
+                      </label>
+                      <div class="accord list-block scrollto">
+                        <ul class="wrapper initial checkbox"> 
+                          <ul>
+                            {% for cat in categories %}
+                    
+                          <li class="ctegory_filter_checkbox" style="display: flex; margin-left: -25px;">
+                            <input class="form-check-input filter-checkbox" type="checkbox" name="checkbox" value="{{ cat.id }}" data-filter="category" style="display: block; width: 15px; height: 15px; ">
+                            <a href="{% url 'store:category_product' cat.cid%}" style="pointer-events:none; transition:unset; transform:unset; padding: 0px 10px">{{cat.title}}</a>
+                          </li>
+                          {% endfor %}
+                      
   
                         </ul>
                       </div>
@@ -149,7 +174,7 @@
                 <a href="#0" class="menu-trigger" trigger-button data-target="sidebar-filter">
                   <i class="ri-filter-line"></i></a>
                 <div class="left">
-                  <span class="grey-color">Показано {{brands_product_list.count}} из {{brands_product_list.count}}</span>
+                  <span class="grey-color">Показано {{products.count}} из {{products.count}}</span>
                 </div>
                 <div class="right">
                   <div class="sort-list">
@@ -178,10 +203,10 @@
                   </div>
                 </div>
               </div>
-              <div class="dotgrid">
+              <div class="dotgrid" id="filtered-product">
   
                 <div class="wrapper">
-                    {% for p in brands_product_list %}
+                    {% for p in category_products %}
                   <div class="item">
                     <div class="dot-image">
                       <a href="" class="product-permalink"></a>
@@ -189,13 +214,13 @@
                         <img src="{{ p.image.url }}" alt="">
                       </div>
                       <div class="thumbnail hover">
-                        <img src="{{ p.image.url }}" alt="">
+                        <img src="{{ p.image2.url }}" alt="">
                       </div>
                       <div class="actions">
                         <ul>
                           <li><a href=""><i class="ri-star-line"></i></a></li>
                           <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
-                          <li><a href=""><i class="ri-eye-line"></i></a></li>
+                          <li><a href="{% url 'store:product_detail' p.pid %}"><i class="ri-eye-line"></i></a></li>
                         </ul>
                       </div>
                       <div class="label"><span>-25%</span></div>

@@ -1,0 +1,84 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+{{category.title}}
+{% endblock title %}
+{% block content %}
+
+<div class="section">
+    <div class="container wide">
+
+
+      <div class="wrap">
+        
+        
+          <div class="heading">
+            {%if query %}
+            <h1 class="title">Поисковой запрос: {{query}}</h1>
+            {% else %}
+            <h2 class="title">Ничего не найдено</h2>
+            {% endif %}
+          </div>
+          <div class="content">
+            <div id="sidebar-filter" class="sidebar">
+              <span>Поиск:</span>
+              <div id="search-float" class="search-float">
+                <div class="container wide">
+                  <form action="{% url 'store:search' %}" class="search" method="get" >
+                    
+                    <input type="search" class="input" id="" placeholder="Поиск.." name="q" value="{{query}}" >
+                
+                  </form>
+                </div>
+              </div>
+             
+            </div>
+            <div class="category-content">
+             
+              <div class="dotgrid">
+  
+                <div class="wrapper">
+                    {% for p in products %}
+                  <div class="item">
+                    <div class="dot-image">
+                      <a href="" class="product-permalink"></a>
+                      <div class="thumbnai">
+                        <img src="{{ p.image.url }}" alt="">
+                      </div>
+                      <div class="thumbnail hover">
+                        <img src="{{ p.image2.url }}" alt="">
+                      </div>
+                      <div class="actions">
+                        <ul>
+                          <li><a href=""><i class="ri-star-line"></i></a></li>
+                          <li><a href=""><i class="ri-arrow-left-right-line"></i></a></li>
+                          <li><a href=""><i class="ri-eye-line"></i></a></li>
+                        </ul>
+                      </div>
+                      <div class="label"><span>-25%</span></div>
+                    </div>
+                    <div class="dot-info">
+                      <h2 class="dot-title"><a href="{% url 'store:product_detail' p.pid %}">{{ p.title }}</a></h2>
+                      <div class="product-price">
+                        <span class="before">₽ {{ p.old_price }}</span>
+                        <span class="current">₽ {{ p.price }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+  
+                </div>
+  
+  
+  
+                </div>
+             
+            </div>
+          </div>
+  
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

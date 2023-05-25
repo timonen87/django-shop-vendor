@@ -15,6 +15,7 @@
           <div class="wrapper swiper-wrapper">
             {% for p in products %}
             <div class="item swiper-slide">
+              
               <div class="dot-image">
                 <a href="" class="product-permalink"></a>
                 <div class="thumbnai">
@@ -23,6 +24,7 @@
                 <div class="thumbnail hover">
                   <img src="{{ p.image2.url }}" alt="" />
                 </div>
+             
                 <div class="actions">
                   <ul>
                     <li>
@@ -32,7 +34,7 @@
                       <a href=""><i class="ri-arrow-left-right-line"></i></a>
                     </li>
                     <li>
-                      <a href=""><i class="ri-eye-line"></i></a>
+                      <a href="{% url 'store:product_detail' p.pid %}"><i class="ri-eye-line"></i></a>
                     </li>
                   </ul>
                 </div>

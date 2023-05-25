@@ -1,0 +1,43 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}
+{{category.title}}
+{% endblock title %}
+{% block content %}
+
+<div class="section">
+    <div class="container wide">
+
+
+      <div class="wrap">
+        
+          <div class="heading">
+            <h1 class="title">{{category.title}}</h1>
+          </div>
+          <div class="content">
+            {% include 'store/catalog/inc/_sidebar-filter.html' %}
+            
+            <div class="category-content">
+                {% include 'store/catalog/inc/_sorter.html' %}
+             
+              <div class="dotgrid" id="filtered-product">
+
+                {% include 'store/catalog/inc/_products.html' %}
+  
+            
+  
+  
+  
+                </div>
+              <div class="button">
+                <div class="aprimary-btn">Посмотреть еще</div>
+              </div>
+            </div>
+          </div>
+  
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

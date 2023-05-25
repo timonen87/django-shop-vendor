@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_list_or_404, redirect
+from django.template.loader import render_to_string
 from django.http import JsonResponse, HttpResponse
 from store.models import Category, Product, ProductImages, ProductReview, CartOrder, CartOrderItems, Vendor, Adress, WishList, Brand
 from django.db.models import Count, Avg
 from store.forms import ProductReviewForm
+from django.db.models import Q
 
 
 
@@ -23,6 +25,14 @@ def product_list(request):
         'products': products,
     }
     return render(request, 'store/home.html', context)
+
+
+def products(request):
+    products = Product.objects.filter(product_status='published')
+    context = {
+        'products': products,
+    }
+    return render(request, 'store/catalog/base_catalog.html', context)
 
 
 def product_detail(request, pid):
@@ -68,7 +78,7 @@ def category_product(request, cid):
         'category': category,
         'category_products': category_products,
     }
-    return render(request, 'store/products.html', context)
+    return render(request, 'store/catalog/category_list.html', context)
 
 def brands_product_list(request, bid):
     brands = Brand.objects.all()
@@ -79,7 +89,7 @@ def brands_product_list(request, bid):
         'brand': brand,
         'brands_product_list': brands_product_list,
     }
-    return render(request, 'store/brands_list.html', context)
+    return render(request, 'store/catalog/brands_list.html', context)
 
 
 
@@ -101,7 +111,7 @@ def vendor_detail(request, vid):
     return render(request, 'store/vendor_list.html', context)
 
 
-
+# Добавение отзыва через ajax
 def add_review(request, pid):
     product = Product.objects.get(pid=pid)
     user = request.user
@@ -130,3 +140,43 @@ def add_review(request, pid):
        }
 
     )
+
+
+def search_view(request):
+    products = Product.objects.all()
+    query = request.GET.get('q')
+    if query:
+        products = products.filter(
+            Q(title__contains=query)|
+            Q(description__contains=query)|
+            Q(sku__contains=query)
+        ).distinct()
+    # products = Product.objects.filter(title__iregex=query).order_by('-date')
+    print(query)
+
+    context = {
+        'products': products,
+        'query': query
+    }
+
+    return render(request, 'store/search.html', context)
+
+
+def filter_products(request):
+    categories = request.GET.getlist('category[]')
+    brand = request.GET.getlist('brand[]')
+
+    products = Product.objects.filter(product_status='published')
+
+    if len(categories) > 0:
+        products = Product.objects.filter(category__id__in = categories).distinct()
+    
+    if len(brand) > 0:
+        products = Product.objects.filter(brand__id__in = brand).distinct()
+
+
+    data = render_to_string('store/async/filter_product.html', {'products': products})
+
+    
+    return JsonResponse({'data': data})
+

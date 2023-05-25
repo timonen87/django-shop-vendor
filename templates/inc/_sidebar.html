@@ -97,15 +97,16 @@
           <ul class="wrapper initial">
      
               {% for brand in brands %}
-              <li><a href="{% url 'store:brands_product_list' brand.bid %}">{{brand.title}}</a></li>
+              <li>
+                <input class="form-check-input" type="checkbox" name="checkbox" id="ctegory_filter_checkbox">
+                <a href="{% url 'store:brands_product_list' brand.bid %}">{{brand.title}}</a>
+              </li>
               {% endfor %}
-            <li><a href="">Mango</a></li>
-            <li><a href="">Zolla</a></li>
-            <li><a href="">Befree</a></li>
-            <li><a href="">Zarina</a></li>
-            <li><a href="">Sela</a></li>
-            <li><a href="">Looks</a></li>
-            <li><a href="">Afati</a></li>
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Default checkbox
+              </label>
+       
 
           </ul>
         </div>
