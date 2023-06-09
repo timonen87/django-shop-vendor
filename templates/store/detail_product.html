@@ -66,7 +66,7 @@
                 <h1 class="title">{{product.title}}</h1>
                 <div class="product-group">
                 <div class="product-price">
-                    <span class="current">₽ {{product.price}}</span>
+                    <span class="current">₽<span class="current" id="current-product-price">{{product.price}}</span></span>
                     <div class="wrap">
                     <span class="before">₽ 700.00</span>
                     <span class="discount">-25%</span>
@@ -107,11 +107,15 @@
                 <div class="product-action">
                 <div class="qty">
                     <button class="decrease">-</button>
-                    <input type="text" value="1">
+                    {% comment %} <input type="text" value="1"> {% endcomment %}
+                    <input type="number" value="1" id="product-quantity">
                     <button class="increase">+</button>
+             
                 </div>
                 <div class="addcart button">
-                    <button type="submit" class="primary-btn">В корзину</button>
+                    <input type="hidden" value="{{product.id}}" name="" id="product_id">
+                    <input type="hidden" value="{{product.title}}" name="" id="product-title">
+                    <button type="submit" class="primary-btn" id="add-to-cart-btn">В корзину</button>
                 </div>
                 <div class="buynow button">
                     <button type="submit" class="secondary-btn btn">Купить сейчас</button>
@@ -354,6 +358,6 @@
     </div>
 
 </main>
-<script src="{% static 'assets/js/review.js'%}"></script>
+
 {% include 'inc/_review.html' %}
 {% endblock content %}

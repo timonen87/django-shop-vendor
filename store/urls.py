@@ -24,5 +24,8 @@ urlpatterns = [
     # Filter
     path('filter-products/', views.filter_products, name='filter_products'),
     path('json-filter/', views.JsonFilterProducts.as_view(), name='json_filter'),
+
+
+     path('add-to-cart/', views.add_to_cart, name='add_to_cart'),
     
 ]
