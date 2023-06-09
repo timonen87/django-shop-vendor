@@ -9,19 +9,28 @@ function ajaxSend(url, params) {
         .then(response => response.json())
         .then(json => render(json))
         .catch(error => console.error(error))
+       
 }
 
 
 const forms = document.querySelector('form[name=filter]');
 console.log(forms)
 
+forms.addEventListener('reset', function(e){
+    e.preventDefault()
+    let url = this.action;
+    let params = new URLSearchParams(new FormData(this)).toString();
+    ajaxSend(url, params);
+
+
+})
+
 forms.addEventListener('submit', function(e){
     e.preventDefault()
     let url = this.action;
     let params = new URLSearchParams(new FormData(this)).toString();
     ajaxSend(url, params);
-    console.log(url)
-    console.log(params)
+
 
 })
 
@@ -33,8 +42,7 @@ function render(data) {
     const div = document.querySelector('#filtered-product-fetch')
     div.innerHTML = output
 
-    console.log(template)
-    console.log(output)
+  
 }
 
 let html =  '\
@@ -67,3 +75,6 @@ let html =  '\
         </div>\
     {{/data}}\
     '
+
+
+

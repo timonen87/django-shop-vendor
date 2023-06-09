@@ -185,12 +185,15 @@ def filter_products(request):
 
 class JsonFilterProducts(ListView):
     def get_queryset(self):
+        
         queryset = Product.objects.filter(
             Q(category__in = self.request.GET.getlist('category'))|
             Q(brand__in = self.request.GET.getlist('brand'))
         ).distinct().values('pid', 'image', 'title', 'old_price', 'price' )
+
         return queryset
     
+        
     def get(self, request, *args, **kwargs):
         queryset = list(self.get_queryset())
         return JsonResponse({'data': queryset}, safe=False)
