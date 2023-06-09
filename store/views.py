@@ -114,33 +114,37 @@ def vendor_detail(request, vid):
 
 # Добавение отзыва через ajax
 def add_review(request, pid):
-    product = Product.objects.get(pid=pid)
-    user = request.user
+    if request.user.is_authenticated:
+        product = Product.objects.get(pid=pid)
+        user = request.user
 
-    review = ProductReview.objects.create(
-        user=user,
-        product=product,
-        review = request.POST['review'],
-        rating = request.POST['rating'],
-    )
+        review = ProductReview.objects.create(
+            user=user,
+            product=product,
+            review = request.POST['review'],
+            rating = request.POST['rating'],
+        )
 
-    context = {
-        'user': user.username,
-        'review': request.POST['review'],
-        'rating': request.POST['rating'],
-    }
+        context = {
+            'user': user.username,
+            'review': request.POST['review'],
+            'rating': request.POST['rating'],
+        }
 
-    average_reviews = ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
+        average_reviews = ProductReview.objects.filter(product=product).aggregate(rating=Avg('rating'))
 
 
+        return JsonResponse(
+        {
+            'bool': True,
+            'context': context,
+            'average_reviews': average_reviews,
+        })
     return JsonResponse(
-       {
-        'bool': True,
-        'context': context,
-        'average_reviews': average_reviews,
-       }
-
-    )
+        {
+            'success': False,
+            'is_authenticated': request.user.is_authenticated
+        })
 
 
 def search_view(request):

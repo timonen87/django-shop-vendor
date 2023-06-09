@@ -26,6 +26,6 @@ urlpatterns = [
     path('json-filter/', views.JsonFilterProducts.as_view(), name='json_filter'),
 
 
-     path('add-to-cart/', views.add_to_cart, name='add_to_cart'),
+    path('add-to-cart/', views.add_to_cart, name='add_to_cart'),
     
 ]
