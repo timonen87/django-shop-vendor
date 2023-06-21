@@ -25,7 +25,7 @@ $('#add-to-cart-btn').on('click', function(){
             console.log('Добаялется в корзину')
         },
         success: function(response){
-            this_val.html('В корзине')
+            this_val.html('Добавлено')
             console.log('Добавлено в корзину!')
             $('.cart-items-count').text(response.totalcartitems)
         }

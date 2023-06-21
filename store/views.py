@@ -189,33 +189,57 @@ def filter_products(request):
 
 
 def add_to_cart(request):
+    # создаем пустой словарь
     cart_product = {}
+    # наполняем словарь данными из реквеста
     cart_product[str(request.GET['id'])] = {
         'title': request.GET['title'],
         'qty': request.GET['qty'],
         'price': request.GET['price'],
     }
+    # print('данные запроса add-to-cart', cart_product)
+    # проверяем есть данные data в post запросе  '/add-to-cart' текущей сессии
 
     if 'cart_data_obj' in request.session:
+        # print('корзина в сессии', request.session['cart_dtat_obj'])
+        # проверяем наличие товара в коризине 
         if str(request.GET['id']) in request.session['cart_data_obj']:
+            # сохраняем данные товара в переменную  коризины cart_data
             cart_data = request.session['cart_data_obj']
+            # print('корзина:', cart_data)
+             # {'15': {'title': 'Крем для рук и ногтей, 250 мл, дозатор', 'qty': 1, 'price': '300,00'}}
+            #  обновляем qty в корзине
             cart_data[str(request.GET['id'])]['qty'] = int(cart_product[str(request.GET['id'])]['qty'])
+            
+            # Обновлеяем qty в обьекете cart_data 
             cart_data.update(cart_data)
+            
             request.session['cart_dtat_obj'] = cart_data
+            # print('корзина в сессии после запроса а добавление', cart_data)
         else:
+            # есл товара в корщине нет, тогда берем из сессии данные корзины
             cart_data = request.session['cart_data_obj']
+            #  добовляем в корзину  данные о продуке из  cart_product
             cart_data.update(cart_product)
+            # обновляем ссесию из cart_data
             request.session['cart_data_obj'] = cart_data
     
     else:
+        # если корзина пустая, тогда сохраняем в сессии данные из cart_product
         request.session['cart_data_obj'] = cart_product
-    return JsonResponse({'data': request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj'])} )
+        # возвращаем  JsonResponse c коризиной и количеством товаров в корзине
+    res = {
+        'data': request.session['cart_data_obj'],
+        'totalcartitems': len(request.session['cart_data_obj'])
+        }
+    # print(context)
+    return JsonResponse(res)
 
 
 
 
 
-# Фильтр реалезованный через fetch render Hogan
+# Фильтр реалезованный через fetch render Hogan js
 class JsonFilterProducts(ListView):
     def get_queryset(self):
         queryset = Product.objects.filter(
